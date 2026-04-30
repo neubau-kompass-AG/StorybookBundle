@@ -1,17 +1,19 @@
 # Building Storybook
 
-Storybook can be built in a static application, to be deployed on a simple web server. The build will contain all stories metadata and the JavaScript used to render the Storybook UI.
+Storybook can be built as a static application and deployed on a simple web server. The build contains story metadata and the JavaScript used to render the Storybook UI.
 
 ## Build Storybook
 
-To build Storybook, use:
+Build Storybook with:
+
 ```shell
 npm run build-storybook
 ```
 
 Production builds do not require the `symfony.server` framework option. The static output still needs access to the Symfony application at runtime for render, asset, and Live Component requests. Deploy it behind a reverse proxy that forwards unmatched Symfony routes to the Symfony server and sets the `X-Storybook-Proxy: true` header.
 
-This will create a `storybook-static` directory:
+The command creates a `storybook-static` directory:
+
 ```text
 ./storybook-static/
 ├── favicon.svg
