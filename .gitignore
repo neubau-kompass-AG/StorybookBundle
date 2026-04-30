@@ -1,5 +1,6 @@
 # PHP dependencies and local runtime state.
 /vendor/
+/vendor-bin/*/vendor/
 /var/
 /composer.lock
 /symfony.lock
