@@ -9,13 +9,14 @@ use Storybook\ArgsProcessor\ArgsProcessorInterface;
 use Storybook\ArgsProcessor\StorybookArgsProcessor;
 use Storybook\Util\RequestAttributesHelper;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class StorybookArgsProcessorTest extends TestCase
 {
     /**
      * @dataProvider getExtractTests
      */
-    public function testExtractRequest(array $json, array $expected)
+    public function testExtractRequest(array $json, array $expected): void
     {
         $request = Request::create('/', content: json_encode($json));
         $request = RequestAttributesHelper::withStorybookAttributes($request, ['story' => 'story']);
@@ -36,7 +37,7 @@ class StorybookArgsProcessorTest extends TestCase
         ];
     }
 
-    public function testGlobalArgsProcessor()
+    public function testGlobalArgsProcessor(): void
     {
         $argsProcessor = new StorybookArgsProcessor();
         $processor = $this->createProcessorMock();
@@ -55,7 +56,18 @@ class StorybookArgsProcessorTest extends TestCase
         }
     }
 
-    public function testOriginalDataArePassedInProcessorArgs()
+    public function testNonArrayArgsPayloadIsRejected(): void
+    {
+        $request = Request::create('/', content: json_encode(['args' => 'invalid']));
+        $request = RequestAttributesHelper::withStorybookAttributes($request, ['story' => 'story']);
+        $argsProcessor = new StorybookArgsProcessor();
+
+        $this->expectException(BadRequestHttpException::class);
+
+        $argsProcessor->process($request);
+    }
+
+    public function testOriginalDataArePassedInProcessorArgs(): void
     {
         $argsProcessor = new StorybookArgsProcessor();
         $processor = $this->createProcessorMock();
@@ -70,7 +82,7 @@ class StorybookArgsProcessorTest extends TestCase
         $argsProcessor->process($request);
     }
 
-    public function testStoryArgsProcessorIsNotExecutedForAnotherStory()
+    public function testStoryArgsProcessorIsNotExecutedForAnotherStory(): void
     {
         $argsProcessor = new StorybookArgsProcessor();
         $processor = $this->createProcessorMock();
@@ -82,7 +94,7 @@ class StorybookArgsProcessorTest extends TestCase
         $argsProcessor->process($request);
     }
 
-    public function testStoryArgsProcessorIsExecutedForConfiguredStory()
+    public function testStoryArgsProcessorIsExecutedForConfiguredStory(): void
     {
         $argsProcessor = new StorybookArgsProcessor();
         $processor = $this->createProcessorMock();
@@ -94,7 +106,7 @@ class StorybookArgsProcessorTest extends TestCase
         $argsProcessor->process($request);
     }
 
-    public function testMultipleProcessorsAreExecutedInOrder()
+    public function testMultipleProcessorsAreExecutedInOrder(): void
     {
         $argsProcessor = new StorybookArgsProcessor();
         $argsProcessor->addProcessor(new class implements ArgsProcessorInterface {

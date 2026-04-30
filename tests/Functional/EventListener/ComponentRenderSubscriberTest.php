@@ -12,7 +12,7 @@ class ComponentRenderSubscriberTest extends WebTestCase
     /**
      * @dataProvider getStories
      */
-    public function testRenderMockedComponent(string $story)
+    public function testRenderMockedComponent(string $story): void
     {
         $client = static::createClient();
 

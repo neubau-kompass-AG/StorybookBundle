@@ -15,7 +15,7 @@ class ProxyRequestListenerTest extends TestCase
     /**
      * @dataProvider requestsProvider
      */
-    public function testProxyRequestStorybookAttributes(array $headers, ?array $attributeValues)
+    public function testProxyRequestStorybookAttributes(array $headers, ?array $attributeValues): void
     {
         $request = new Request();
         $request->headers->add($headers);

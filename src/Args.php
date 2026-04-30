@@ -75,7 +75,7 @@ final class Args implements \ArrayAccess, \Countable, \IteratorAggregate
         return $this->storage;
     }
 
-    private static function assertKeyIsString($key): void
+    private static function assertKeyIsString(mixed $key): void
     {
         if (!\is_string($key)) {
             throw new \InvalidArgumentException(\sprintf('Only string keys are allowed in "%s".', self::class));
