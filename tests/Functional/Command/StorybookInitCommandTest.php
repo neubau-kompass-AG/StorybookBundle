@@ -96,8 +96,8 @@ class StorybookInitCommandTest extends KernelTestCase
         $commandTester->assertCommandIsSuccessful();
 
         $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
-        $this->assertStringContainsString('@sensiolabs/storybook-symfony-vite', $main);
-        $this->assertStringNotContainsString('@sensiolabs/storybook-symfony-webpack', $main);
+        $this->assertStringContainsString('@neubau-kompass/storybook-symfony-vite', $main);
+        $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
 
         $this->assertFileExists($this->projectPath('vitest.config.ts'));
     }
@@ -150,8 +150,8 @@ class StorybookInitCommandTest extends KernelTestCase
         $commandTester->assertCommandIsSuccessful();
 
         $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
-        $this->assertStringContainsString('@sensiolabs/storybook-symfony-webpack', $main);
-        $this->assertStringNotContainsString('@sensiolabs/storybook-symfony-vite', $main);
+        $this->assertStringContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
+        $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-vite', $main);
     }
 
     // -------------------------------------------------------------------------

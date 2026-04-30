@@ -1,11 +1,11 @@
 import { SymfonyOptions } from '../types';
-import { TwigLoaderPlugin } from '@sensiolabs/storybook-symfony-shared/server/lib/twig-loader-plugin';
+import { TwigLoaderPlugin } from '@neubau-kompass/storybook-symfony-shared/server/lib/twig-loader-plugin';
 import { PresetProperty } from 'storybook/internal/types';
 import { dedent } from 'ts-dedent';
-import { runSymfonyCommand } from '@sensiolabs/storybook-symfony-shared/server/lib/symfony';
-import { injectPreviewHtml } from '@sensiolabs/storybook-symfony-shared/server/lib/injectPreviewHtml';
-import { computeAdditionalWatchPaths } from '@sensiolabs/storybook-symfony-shared/server/lib/computeAdditionalWatchPaths';
-import { BuildOptions, getBuildOptions } from '@sensiolabs/storybook-symfony-shared/server/framework-options';
+import { runSymfonyCommand } from '@neubau-kompass/storybook-symfony-shared/server/lib/symfony';
+import { injectPreviewHtml } from '@neubau-kompass/storybook-symfony-shared/server/lib/injectPreviewHtml';
+import { computeAdditionalWatchPaths } from '@neubau-kompass/storybook-symfony-shared/server/lib/computeAdditionalWatchPaths';
+import { BuildOptions, getBuildOptions } from '@neubau-kompass/storybook-symfony-shared/server/framework-options';
 import { logger } from 'storybook/internal/node-logger';
 import { sep } from 'node:path';
 import type { Plugin, UserConfig } from 'vite';

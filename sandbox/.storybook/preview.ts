@@ -1,4 +1,4 @@
-import { Preview } from '@sensiolabs/storybook-symfony-vite';
+import { Preview } from '@neubau-kompass/storybook-symfony-vite';
 
 const preview: Preview = {
     parameters: {

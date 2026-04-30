@@ -1,9 +1,10 @@
 {
-    "version": "0.0.0",
-    "name": "@sensiolabs/storybook-symfony-shared",
+    "version": "0.1.0",
+    "name": "@neubau-kompass/storybook-symfony-shared",
     "private": true,
     "type": "module",
     "description": "Shared internals for Storybook Symfony framework packages",
+    "author": "neubau kompass AG",
     "license": "MIT",
     "scripts": {
         "build": "rimraf ./dist && tsup",

@@ -2,8 +2,8 @@
 
 The bundle supports two Storybook framework packages:
 
-- `@sensiolabs/storybook-symfony-vite`
-- `@sensiolabs/storybook-symfony-webpack`
+- `@neubau-kompass/storybook-symfony-vite`
+- `@neubau-kompass/storybook-symfony-webpack`
 
 Both packages use the same Symfony renderer. The difference is the Storybook builder used to compile and serve the preview application.
 
@@ -18,13 +18,13 @@ bin/console storybook:init --builder=vite
 Typical `.storybook/main.ts`:
 
 ```ts
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-vite";
 
 const config: StorybookConfig = {
   stories: ["../templates/components/**/*.stories.[tj]s"],
   addons: ["@storybook/addon-docs", "@storybook/addon-vitest"],
   framework: {
-    name: "@sensiolabs/storybook-symfony-vite",
+    name: "@neubau-kompass/storybook-symfony-vite",
     options: {
       symfony: {
         server: "http://localhost:8000",
@@ -51,13 +51,13 @@ bin/console storybook:init --builder=webpack
 Typical `.storybook/main.ts`:
 
 ```ts
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-webpack";
 
 const config: StorybookConfig = {
   stories: ["../templates/components/**/*.stories.[tj]s"],
   addons: ["@storybook/addon-docs"],
   framework: {
-    name: "@sensiolabs/storybook-symfony-webpack",
+    name: "@neubau-kompass/storybook-symfony-webpack",
     options: {
       symfony: {
         server: "http://localhost:8000",
@@ -93,7 +93,7 @@ Each framework package exports Storybook-compatible TypeScript types:
 import type {
   StorybookConfig,
   Preview,
-} from "@sensiolabs/storybook-symfony-vite";
+} from "@neubau-kompass/storybook-symfony-vite";
 ```
 
 Use the matching package for the selected builder:
@@ -102,5 +102,5 @@ Use the matching package for the selected builder:
 import type {
   StorybookConfig,
   Preview,
-} from "@sensiolabs/storybook-symfony-webpack";
+} from "@neubau-kompass/storybook-symfony-webpack";
 ```

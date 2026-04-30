@@ -13,7 +13,7 @@ Enable it in `.storybook/main.ts`:
 ```ts
 // .storybook/main.ts
 
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-vite";
 
 const config: StorybookConfig = {
   // ...
@@ -73,7 +73,7 @@ Be sure to include `.mdx` files in the story specifier of your `.storybook/main.
 ```ts
 // .storybook/main.ts
 
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-vite";
 
 const config: StorybookConfig = {
   stories: [

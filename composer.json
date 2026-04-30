@@ -1,5 +1,5 @@
 {
-    "name": "sensiolabs/storybook-bundle",
+    "name": "neubau-kompass/storybook-bundle",
     "type": "library",
     "license": "MIT",
     "description": "Bundle to use Storybook with Symfony UX packages.",
@@ -7,6 +7,9 @@
         {
             "name": "Nicolas Rigaud",
             "email": "squrious@protonmail.com"
+        },
+        {
+            "name": "neubau kompass AG"
         }
     ],
     "autoload": {

@@ -1,11 +1,11 @@
-# @sensiolabs/storybook-symfony-shared
+# @neubau-kompass/storybook-symfony-shared
 
 Internal shared package for the Symfony Storybook framework packages.
 
 This package is private to the repository. Consumers should install one public builder package instead:
 
-- `@sensiolabs/storybook-symfony-vite`
-- `@sensiolabs/storybook-symfony-webpack`
+- `@neubau-kompass/storybook-symfony-vite`
+- `@neubau-kompass/storybook-symfony-webpack`
 
 ## Responsibilities
 

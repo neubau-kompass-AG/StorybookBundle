@@ -11,7 +11,7 @@ import type {
     TypescriptOptions as TypescriptOptionsBuilder,
 } from '@storybook/builder-webpack5';
 
-type FrameworkName = '@sensiolabs/storybook-symfony-webpack';
+type FrameworkName = '@neubau-kompass/storybook-symfony-webpack';
 type BuilderName = '@storybook/builder-webpack5';
 
 type ProxyPaths = string[] | string;

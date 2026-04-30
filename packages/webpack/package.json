@@ -1,8 +1,9 @@
 {
-    "version": "0.0.0",
-    "name": "@sensiolabs/storybook-symfony-webpack",
+    "version": "0.1.0",
+    "name": "@neubau-kompass/storybook-symfony-webpack",
     "type": "module",
     "description": "Storybook for Symfony",
+    "author": "neubau kompass AG",
     "keywords": [
         "storybook",
         "symfony"
@@ -60,7 +61,7 @@
     },
     "devDependencies": {
         "@eslint/js": "10.0.1",
-        "@sensiolabs/storybook-symfony-shared": "file:../shared",
+        "@neubau-kompass/storybook-symfony-shared": "file:../shared",
         "@types/he": "1.2.3",
         "@types/is-glob": "4.0.4",
         "@types/jest": "29.5.14",

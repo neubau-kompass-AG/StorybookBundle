@@ -18,7 +18,7 @@ Update your `.storybook/main.ts` configuration file accordingly:
 ```ts
 // .storybook/main.ts
 
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-vite";
 
 const config: StorybookConfig = {
   stories: [

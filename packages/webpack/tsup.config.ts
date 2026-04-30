@@ -20,7 +20,7 @@ export default defineConfig(async (options) => {
         treeshake: true,
         clean: false,
         external: [/^storybook(\/.*)?$/, /^@storybook\/.*/],
-        noExternal: ['@sensiolabs/storybook-symfony-shared'],
+        noExternal: ['@neubau-kompass/storybook-symfony-shared'],
     };
 
     const configs: Options[] = [];
@@ -56,7 +56,7 @@ export default defineConfig(async (options) => {
             ...commonConfig,
             entry: previewEntries,
             dts: {
-                resolve: ['@sensiolabs/storybook-symfony-shared'],
+                resolve: ['@neubau-kompass/storybook-symfony-shared'],
             },
             target: 'esnext',
             platform: 'browser',

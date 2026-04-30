@@ -2,7 +2,7 @@ import { StorybookConfig as StorybookConfig$1, TypescriptOptions as TypescriptOp
 import { StorybookConfigWebpack, BuilderOptions, TypescriptOptions } from '@storybook/builder-webpack5';
 import { PresetProperty } from 'storybook/internal/types';
 
-type FrameworkName = '@sensiolabs/storybook-symfony-webpack';
+type FrameworkName = '@neubau-kompass/storybook-symfony-webpack';
 type BuilderName = '@storybook/builder-webpack5';
 type ProxyPaths = string[] | string;
 type SymfonyOptions = {

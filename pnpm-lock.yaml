@@ -160,7 +160,7 @@ importers:
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.2.1)
-      '@sensiolabs/storybook-symfony-shared':
+      '@neubau-kompass/storybook-symfony-shared':
         specifier: file:../shared
         version: link:../shared
       '@types/he':
@@ -275,7 +275,7 @@ importers:
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.2.1)
-      '@sensiolabs/storybook-symfony-shared':
+      '@neubau-kompass/storybook-symfony-shared':
         specifier: file:../shared
         version: link:../shared
       '@types/he':

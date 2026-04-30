@@ -53,9 +53,9 @@ body:
       label: Versions
       description: Include every version that is relevant to the failure.
       value: |
-        - sensiolabs/storybook-bundle:
-        - @sensiolabs/storybook-symfony-vite:
-        - @sensiolabs/storybook-symfony-webpack:
+        - neubau-kompass/storybook-bundle:
+        - @neubau-kompass/storybook-symfony-vite:
+        - @neubau-kompass/storybook-symfony-webpack:
         - Symfony:
         - PHP:
         - Node.js:

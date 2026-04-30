@@ -1,10 +1,10 @@
 # Storybook For Symfony
 
-[![Packagist Version](https://img.shields.io/packagist/v/sensiolabs/storybook-bundle?style=flat-square)](https://packagist.org/packages/sensiolabs/storybook-bundle)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/sensiolabs/storybook-bundle?style=flat-square)](https://packagist.org/packages/sensiolabs/storybook-bundle)
-[![Vite Package](https://img.shields.io/npm/v/@sensiolabs/storybook-symfony-vite?label=vite%20package&style=flat-square)](https://www.npmjs.com/package/@sensiolabs/storybook-symfony-vite)
-[![Webpack Package](https://img.shields.io/npm/v/@sensiolabs/storybook-symfony-webpack?label=webpack%20package&style=flat-square)](https://www.npmjs.com/package/@sensiolabs/storybook-symfony-webpack)
-[![CI](https://github.com/sensiolabs/StorybookBundle/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/sensiolabs/StorybookBundle/actions/workflows/ci.yaml?query=branch%3Amain)
+[![Packagist Version](https://img.shields.io/packagist/v/neubau-kompass/storybook-bundle?style=flat-square)](https://packagist.org/packages/neubau-kompass/storybook-bundle)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/neubau-kompass/storybook-bundle?style=flat-square)](https://packagist.org/packages/neubau-kompass/storybook-bundle)
+[![Vite Package](https://img.shields.io/npm/v/@neubau-kompass/storybook-symfony-vite?label=vite%20package&style=flat-square)](https://www.npmjs.com/package/@neubau-kompass/storybook-symfony-vite)
+[![Webpack Package](https://img.shields.io/npm/v/@neubau-kompass/storybook-symfony-webpack?label=webpack%20package&style=flat-square)](https://www.npmjs.com/package/@neubau-kompass/storybook-symfony-webpack)
+[![CI](https://github.com/neubau-kompass-AG/StorybookBundle/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/neubau-kompass-AG/StorybookBundle/actions/workflows/ci.yaml?query=branch%3Amain)
 [![PHP](https://img.shields.io/badge/PHP-%3E%3D8.4-777bb4?style=flat-square)](https://www.php.net/supported-versions.php)
 [![Symfony](https://img.shields.io/badge/Symfony-%5E8.0-000000?style=flat-square)](https://symfony.com/releases)
 [![Storybook](https://img.shields.io/badge/Storybook-%5E10-ff4785?style=flat-square)](https://storybook.js.org/)
@@ -63,7 +63,7 @@ Storybook for Symfony integrates Storybook 10 with Symfony and Twig Components. 
 Install the Composer bundle:
 
 ```shell
-composer require sensiolabs/storybook-bundle
+composer require neubau-kompass/storybook-bundle
 ```
 
 Initialize Storybook. Vite is the default builder. The command detects the package manager from an existing lockfile when possible and falls back to npm.
@@ -104,29 +104,29 @@ Start the Symfony server at the address configured in `.storybook/main.ts`, then
 
 ## Composer and JavaScript Packages
 
-The Composer package remains `sensiolabs/storybook-bundle`. It provides the Symfony bundle, render endpoint, Twig sandboxing, component integration, and the `storybook:init` command.
+The Composer package remains `neubau-kompass/storybook-bundle`. It provides the Symfony bundle, render endpoint, Twig sandboxing, component integration, and the `storybook:init` command.
 
-| Path               | Package                                 | Audience     | Responsibility                                                              |
-| ------------------ | --------------------------------------- | ------------ | --------------------------------------------------------------------------- |
-| `src/`             | `sensiolabs/storybook-bundle`           | Symfony apps | Bundle services, render endpoint, Twig integration, mocks, and init command |
-| `packages/shared`  | `@sensiolabs/storybook-symfony-shared`  | Internal     | Shared client renderer, Twig helpers, docs helpers, Symfony command helpers |
-| `packages/vite`    | `@sensiolabs/storybook-symfony-vite`    | Consumers    | Storybook framework package for Vite                                        |
-| `packages/webpack` | `@sensiolabs/storybook-symfony-webpack` | Consumers    | Storybook framework package for Webpack 5                                   |
-| `sandbox/`         | Local app                               | Contributors | Integration and smoke-test application                                      |
+| Path               | Package                                     | Audience     | Responsibility                                                              |
+| ------------------ | ------------------------------------------- | ------------ | --------------------------------------------------------------------------- |
+| `src/`             | `neubau-kompass/storybook-bundle`           | Symfony apps | Bundle services, render endpoint, Twig integration, mocks, and init command |
+| `packages/shared`  | `@neubau-kompass/storybook-symfony-shared`  | Internal     | Shared client renderer, Twig helpers, docs helpers, Symfony command helpers |
+| `packages/vite`    | `@neubau-kompass/storybook-symfony-vite`    | Consumers    | Storybook framework package for Vite                                        |
+| `packages/webpack` | `@neubau-kompass/storybook-symfony-webpack` | Consumers    | Storybook framework package for Webpack 5                                   |
+| `sandbox/`         | Local app                                   | Contributors | Integration and smoke-test application                                      |
 
 > [!NOTE]
 > Consumers install only the selected public builder package. The public Vite and Webpack packages inline the shared runtime in their built `dist/` files.
 
-Generated projects use local file dependencies while developing from Composer:
+Generated projects use the public JavaScript framework packages:
 
-| Builder | Local package dependency                                   |
-| ------- | ---------------------------------------------------------- |
-| Vite    | `file:vendor/sensiolabs/storybook-bundle/packages/vite`    |
-| Webpack | `file:vendor/sensiolabs/storybook-bundle/packages/webpack` |
+| Builder | JavaScript package                          | Version  |
+| ------- | ------------------------------------------- | -------- |
+| Vite    | `@neubau-kompass/storybook-symfony-vite`    | `^0.1.0` |
+| Webpack | `@neubau-kompass/storybook-symfony-webpack` | `^0.1.0` |
 
 ## Builders
 
-`storybook:init` generates a Vite-based `.storybook/main.ts` using `@sensiolabs/storybook-symfony-vite`. Symfony itself does not require Webpack for Storybook rendering; the bundle renders Twig through Symfony over HTTP and uses the Storybook builder only for the preview app, docs, story modules, and dev-server integration.
+`storybook:init` generates a Vite-based `.storybook/main.ts` using `@neubau-kompass/storybook-symfony-vite`. Symfony itself does not require Webpack for Storybook rendering; the bundle renders Twig through Symfony over HTTP and uses the Storybook builder only for the preview app, docs, story modules, and dev-server integration.
 
 | Builder | Use when...                                                                                  |
 | ------- | -------------------------------------------------------------------------------------------- |

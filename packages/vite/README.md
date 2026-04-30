@@ -1,6 +1,6 @@
-# @sensiolabs/storybook-symfony-vite
+# @neubau-kompass/storybook-symfony-vite
 
-Vite framework package for `sensiolabs/storybook-bundle`.
+Vite framework package for `neubau-kompass/storybook-bundle`.
 
 This is the default Storybook 10 integration. Symfony still renders Twig over the bundle render endpoint; Vite runs the Storybook preview environment, dev server, HMR, and Storybook/Vitest test flow.
 
@@ -10,10 +10,10 @@ Most users should install the Composer bundle and run:
 bin/console storybook:init --builder=vite
 ```
 
-That command writes the Storybook config and points the project at this package. In Composer path installs it uses:
+That command writes the Storybook config and points the project at this package:
 
 ```json
-"@sensiolabs/storybook-symfony-vite": "file:vendor/sensiolabs/storybook-bundle/packages/vite"
+"@neubau-kompass/storybook-symfony-vite": "^0.1.0"
 ```
 
 Use this package directly only when publishing or developing the JavaScript framework package itself.
@@ -21,13 +21,13 @@ Use this package directly only when publishing or developing the JavaScript fram
 ## Configuration
 
 ```ts
-import type { StorybookConfig } from '@sensiolabs/storybook-symfony-vite';
+import type { StorybookConfig } from '@neubau-kompass/storybook-symfony-vite';
 
 const config: StorybookConfig = {
     stories: ['../templates/components/**/*.stories.[tj]s'],
     addons: ['@storybook/addon-docs', '@storybook/addon-vitest'],
     framework: {
-        name: '@sensiolabs/storybook-symfony-vite',
+        name: '@neubau-kompass/storybook-symfony-vite',
         options: {
             symfony: {
                 server: 'http://localhost:8000',
@@ -46,7 +46,7 @@ The `symfony.server` option is required while running Storybook in development b
 ## Exported Types
 
 ```ts
-import type { StorybookConfig, Preview } from '@sensiolabs/storybook-symfony-vite';
+import type { StorybookConfig, Preview } from '@neubau-kompass/storybook-symfony-vite';
 ```
 
 Use `StorybookConfig` in `.storybook/main.ts` and `Preview` in `.storybook/preview.ts`.

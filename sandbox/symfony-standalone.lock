@@ -1,5 +1,5 @@
 {
-    "sensiolabs/storybook-bundle": {
+    "neubau-kompass/storybook-bundle": {
         "version": "dev-main"
     },
     "symfony/asset-mapper": {

@@ -58,8 +58,8 @@ The Composer package remains the Symfony bundle. The Storybook framework code li
 | Package            | Purpose                                                                                                  |
 | ------------------ | -------------------------------------------------------------------------------------------------------- |
 | `packages/shared`  | Shared renderer, Twig story helpers, Symfony command helpers, docs/source helpers, and preview utilities |
-| `packages/vite`    | Vite Storybook framework package, published as `@sensiolabs/storybook-symfony-vite`                      |
-| `packages/webpack` | Webpack Storybook framework package, published as `@sensiolabs/storybook-symfony-webpack`                |
+| `packages/vite`    | Vite Storybook framework package, published as `@neubau-kompass/storybook-symfony-vite`                  |
+| `packages/webpack` | Webpack Storybook framework package, published as `@neubau-kompass/storybook-symfony-webpack`            |
 
 `packages/shared` is internal to this repository. The Vite and Webpack packages inline the shared runtime in their built `dist/` output.
 

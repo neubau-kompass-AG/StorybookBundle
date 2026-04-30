@@ -20,6 +20,7 @@ use Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle;
 final class StorybookInitCommand extends Command
 {
     public const STORYBOOK_VERSION = '10.3.5';
+    private const STORYBOOK_SYMFONY_PACKAGE_VERSION = '^0.1.0';
     private SymfonyStyle $io;
 
     public function __construct(private readonly string $projectDir)
@@ -125,7 +126,7 @@ HELP
         $packageJsonData['devDependencies'] ??= [];
         if ($legacyWebpack) {
             $packageJsonData['devDependencies'] += [
-                '@sensiolabs/storybook-symfony-webpack' => 'file:vendor/sensiolabs/storybook-bundle/packages/webpack',
+                '@neubau-kompass/storybook-symfony-webpack' => self::STORYBOOK_SYMFONY_PACKAGE_VERSION,
                 '@storybook/addon-docs' => self::STORYBOOK_VERSION,
                 '@storybook/addon-webpack5-compiler-swc' => '4.0.3',
                 'storybook' => self::STORYBOOK_VERSION,
@@ -134,7 +135,7 @@ HELP
             ];
         } else {
             $packageJsonData['devDependencies'] += [
-                '@sensiolabs/storybook-symfony-vite' => 'file:vendor/sensiolabs/storybook-bundle/packages/vite',
+                '@neubau-kompass/storybook-symfony-vite' => self::STORYBOOK_SYMFONY_PACKAGE_VERSION,
                 '@storybook/addon-docs' => self::STORYBOOK_VERSION,
                 '@storybook/addon-vitest' => self::STORYBOOK_VERSION,
                 '@vitest/browser' => '4.1.5',
@@ -167,7 +168,7 @@ HELP
     {
         $this->io->note('Generating Storybook configuration files');
 
-        $packageName = $legacyWebpack ? '@sensiolabs/storybook-symfony-webpack' : '@sensiolabs/storybook-symfony-vite';
+        $packageName = $legacyWebpack ? '@neubau-kompass/storybook-symfony-webpack' : '@neubau-kompass/storybook-symfony-vite';
         $addons = $legacyWebpack ? <<<TS
         "@storybook/addon-webpack5-compiler-swc",
         "@storybook/addon-docs",
@@ -377,7 +378,7 @@ TWIG;
 
         $storyFile = Path::join($this->projectDir, 'stories', 'Component.stories.js');
 
-        $packageName = $legacyWebpack ? '@sensiolabs/storybook-symfony-webpack' : '@sensiolabs/storybook-symfony-vite';
+        $packageName = $legacyWebpack ? '@neubau-kompass/storybook-symfony-webpack' : '@neubau-kompass/storybook-symfony-vite';
 
         $content = <<<JS
 import {twig} from "$packageName";
