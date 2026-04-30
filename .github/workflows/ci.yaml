@@ -137,7 +137,7 @@ jobs:
         run: |
           STATUS="$(git status --porcelain -- package-lock.json packages/shared/dist packages/vite/dist packages/webpack/dist)"
           if [ -n "$STATUS" ]; then
-            echo "JS build changed checked generated files:"
+            echo "npm install or build changed checked JS artifacts:"
             echo "$STATUS"
             exit 1
           fi

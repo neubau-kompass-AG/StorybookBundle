@@ -17,13 +17,13 @@ The JavaScript integration is now split by builder:
 - Vite: `@neubau-kompass/storybook-symfony-vite`
 - Webpack: `@neubau-kompass/storybook-symfony-webpack`
 
-The previous `@neubau-kompass/storybook-symfony-webpack5` package name and `storybook/` package directory are replaced by the new workspace layout:
+The upstream `@sensiolabs/storybook-symfony-webpack5` package name and `storybook/` package directory are replaced by the new workspace layout:
 
 - `packages/shared`
 - `packages/vite`
 - `packages/webpack`
 
-Generated Composer-local file dependencies now point to:
+Generated JavaScript dependencies now point to the published npm packages:
 
 - `@neubau-kompass/storybook-symfony-vite`
 - `@neubau-kompass/storybook-symfony-webpack`
