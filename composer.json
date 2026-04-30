@@ -3,6 +3,11 @@
     "type": "library",
     "license": "MIT",
     "description": "Bundle to use Storybook with Symfony UX packages.",
+    "homepage": "https://github.com/neubau-kompass-AG/StorybookBundle",
+    "support": {
+        "issues": "https://github.com/neubau-kompass-AG/StorybookBundle/issues",
+        "source": "https://github.com/neubau-kompass-AG/StorybookBundle"
+    },
     "authors": [
         {
             "name": "Nicolas Rigaud",
