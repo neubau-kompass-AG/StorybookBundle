@@ -27,14 +27,14 @@ bun install
 
 The repository intentionally commits one lockfile per supported package manager:
 
-| Lockfile | Package manager |
-|----------|-----------------|
-| `package-lock.json` | npm |
-| `pnpm-lock.yaml` | pnpm |
-| `yarn.lock` | Yarn |
-| `bun.lock` | Bun |
+| Lockfile            | Package manager |
+| ------------------- | --------------- |
+| `package-lock.json` | npm             |
+| `pnpm-lock.yaml`    | pnpm            |
+| `yarn.lock`         | Yarn            |
+| `bun.lock`          | Bun             |
 
-These lockfiles are not duplicates. They verify that the same `package.json` dependency contract works with each supported installer, whose peer dependency resolution, package store, and workspace linking behaviour differ.
+These lockfiles are not duplicates. They verify that the same `package.json` dependency contract works with each supported installer, whose peer dependency resolution, package store, and workspace linking behavior differ.
 
 Keep all committed lockfiles in sync when changing JavaScript dependencies:
 
@@ -55,11 +55,11 @@ bun run build
 
 The Composer package remains the Symfony bundle. The Storybook framework code lives in JavaScript workspace packages:
 
-| Package | Purpose |
-|---------|---------|
-| `packages/shared` | Shared renderer, Twig story helpers, Symfony command helpers, docs/source helpers, and preview utilities |
-| `packages/vite` | Vite Storybook framework package, published as `@sensiolabs/storybook-symfony-vite` |
-| `packages/webpack` | Webpack Storybook framework package, published as `@sensiolabs/storybook-symfony-webpack` |
+| Package            | Purpose                                                                                                  |
+| ------------------ | -------------------------------------------------------------------------------------------------------- |
+| `packages/shared`  | Shared renderer, Twig story helpers, Symfony command helpers, docs/source helpers, and preview utilities |
+| `packages/vite`    | Vite Storybook framework package, published as `@sensiolabs/storybook-symfony-vite`                      |
+| `packages/webpack` | Webpack Storybook framework package, published as `@sensiolabs/storybook-symfony-webpack`                |
 
 `packages/shared` is internal to this repository. The Vite and Webpack packages inline the shared runtime in their built `dist/` output.
 
@@ -114,10 +114,10 @@ Now you can visit <http://localhost:6006> to use the sandbox while developing th
 
 The sandbox comes with two kinds of components/stories:
 
-| | Components | Stories | Usage |
-|-|------------|---------|-------|
-| Symfony UX components | `templates/components` | `templates/components` | Symfony UX use cases such as component mocks and callbacks |
-| Storybook testing components | `templates/components/Storybook` | `template-stories` | Storybook compatibility fixtures used by the integration tests |
+|                              | Components                       | Stories                | Usage                                                          |
+| ---------------------------- | -------------------------------- | ---------------------- | -------------------------------------------------------------- |
+| Symfony UX components        | `templates/components`           | `templates/components` | Symfony UX use cases such as component mocks and callbacks     |
+| Storybook testing components | `templates/components/Storybook` | `template-stories`     | Storybook compatibility fixtures used by the integration tests |
 
 The committed sandbox is npm-based because `sandbox/bin/setup-standalone` installs with npm. Generated user projects remain package-manager-aware through `bin/console storybook:init --package-manager=...`.
 
@@ -165,9 +165,9 @@ Storybook integration tests use Storybook/Vitest via `@storybook/addon-vitest`. 
 
 We use adapted stories from the main Storybook repository to test the Symfony framework integration. Those stories are located in `sandbox/template-stories`:
 
-| Sandbox location | Storybook repository location |
-|------------------|-------------------------------|
-| `template-stories/lib/preview-api` | `storybook/code/lib/preview-api/template/stories` |
+| Sandbox location                       | Storybook repository location                         |
+| -------------------------------------- | ----------------------------------------------------- |
+| `template-stories/lib/preview-api`     | `storybook/code/lib/preview-api/template/stories`     |
 | `template-stories/addons/<addon-name>` | `storybook/code/addons/<addon-name>/template/stories` |
 
 The files may differ from the original ones to be compatible with this framework, but changes should be minimal and required for the Symfony integration. Those changes are indicated with a `@OVERRIDE` comment.
