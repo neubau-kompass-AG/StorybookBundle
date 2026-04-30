@@ -4,6 +4,15 @@
     "type": "module",
     "description": "Storybook for Symfony",
     "author": "neubau kompass AG",
+    "homepage": "https://github.com/neubau-kompass-AG/StorybookBundle#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/neubau-kompass-AG/StorybookBundle.git",
+        "directory": "packages/vite"
+    },
+    "bugs": {
+        "url": "https://github.com/neubau-kompass-AG/StorybookBundle/issues"
+    },
     "keywords": [
         "storybook",
         "symfony"
@@ -36,9 +45,7 @@
     "files": [
         "dist/**/*",
         "README.md",
-        "*.js",
-        "*.d.ts",
-        "!src/**/*"
+        "preset.js"
     ],
     "dependencies": {
         "@storybook/builder-vite": "10.3.5",

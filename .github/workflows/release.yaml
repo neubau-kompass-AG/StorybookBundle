@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to validate, for example v0.1.0"
+        required: true
+        type: string
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  npm:
+    name: Publish npm packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm run test
+      - name: Lint
+        run: npm run lint
+      - name: Check formatting
+        run: npm run format:check
+      - name: Validate release versions
+        env:
+          RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+        run: |
+          export VERSION="${RELEASE_TAG#v}"
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+
+          const version = process.env.VERSION;
+          const packages = [
+            'packages/vite/package.json',
+            'packages/webpack/package.json',
+          ];
+
+          for (const file of packages) {
+            const packageJson = JSON.parse(readFileSync(file, 'utf8'));
+            if (packageJson.version !== version) {
+              throw new Error(`${file} version ${packageJson.version} does not match release tag v${version}.`);
+            }
+          }
+          NODE
+      - name: Publish Vite package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: ./scripts/publish-npm-package.sh packages/vite
+      - name: Publish Webpack package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: ./scripts/publish-npm-package.sh packages/webpack
+
+  packagist:
+    name: Update Packagist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request Packagist update
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+        run: |
+          if [ -z "$PACKAGIST_USERNAME" ] || [ -z "$PACKAGIST_TOKEN" ]; then
+            echo "Packagist credentials are not configured; skipping Packagist API update."
+            exit 0
+          fi
+
+          curl --fail-with-body \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${PACKAGIST_USERNAME}:${PACKAGIST_TOKEN}" \
+            -d '{"repository":"https://github.com/neubau-kompass-AG/StorybookBundle"}' \
+            https://packagist.org/api/update-package

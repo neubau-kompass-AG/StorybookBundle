@@ -26,6 +26,7 @@ Storybook for Symfony integrates Storybook 10 with Symfony and Twig Components. 
 | Configure Symfony rendering   | [Configuration](docs/configuration.md)        |
 | Understand the repo layout    | [Architecture](docs/architecture.md)          |
 | Run checks or use the sandbox | [Contributing](CONTRIBUTING.md)               |
+| Publish a release             | [Release Process](docs/release.md)            |
 | Migrate from an older version | [Upgrade Guide](UPGRADE.md)                   |
 
 ## Supported Stack
@@ -249,6 +250,7 @@ The sandbox uses npm in `sandbox/bin/setup-standalone`, so its Vitest config int
 | Args processors           | [docs/args-processors.md](docs/args-processors.md) |
 | Component mocks           | [docs/component-mock.md](docs/component-mock.md)   |
 | Static Storybook builds   | [docs/static-build.md](docs/static-build.md)       |
+| Release process           | [docs/release.md](docs/release.md)                 |
 
 Feature-specific pages:
 
