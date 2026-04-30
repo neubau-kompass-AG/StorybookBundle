@@ -177,7 +177,7 @@ jobs:
         run: |
           STATUS="$(git status --porcelain -- package-lock.json packages/shared/dist packages/vite/dist packages/webpack/dist)"
           if [ -n "$STATUS" ]; then
-            echo "npm install or build changed checked JS artifacts:"
+            echo "npm install/build updated tracked JS artifacts; please commit the updated dist/lockfiles listed below:"
             echo "$STATUS"
             exit 1
           fi

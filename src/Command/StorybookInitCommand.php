@@ -165,6 +165,7 @@ HELP
 
     /**
      * @throws \JsonException
+     * @throws \RuntimeException
      */
     private function getStorybookSymfonyPackageVersion(bool $legacyWebpack): string
     {
