@@ -53,7 +53,7 @@ The release workflow also supports Packagist's manual update endpoint as a fallb
 
 ## Cutting a Release
 
-Keep all package versions synchronized. For release `0.1.0`, the public npm package versions must be `0.1.0` and the git tag must be `v0.1.0`.
+Keep all package versions synchronized. For release `0.1.1`, the public npm package versions must be `0.1.1` and the git tag must be `v0.1.1`.
 
 Run the normal checks before tagging:
 
@@ -71,8 +71,8 @@ Create and push the tag from `main`:
 ```shell
 git checkout main
 git pull --ff-only
-git tag -a v0.1.0 -m "Release v0.1.0"
-git push origin v0.1.0
+git tag -a v0.1.1 -m "Release v0.1.1"
+git push origin v0.1.1
 ```
 
 The release workflow validates that the npm package versions match the tag, rebuilds and checks the workspace, publishes the Vite and Webpack packages to npm with provenance, and requests a Packagist update when Packagist credentials are configured. The GitHub webhook should still be configured because it covers every push, not only release workflow runs.

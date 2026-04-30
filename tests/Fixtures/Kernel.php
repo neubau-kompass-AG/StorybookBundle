@@ -38,6 +38,9 @@ class Kernel extends BaseKernel
             'http_method_override' => false,
             'php_errors' => ['log' => true],
             'handle_all_throwables' => true,
+            'property_info' => [
+                'with_constructor_extractor' => true,
+            ],
         ];
 
         // AssetMapper configuration

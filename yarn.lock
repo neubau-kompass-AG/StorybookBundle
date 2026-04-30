@@ -442,7 +442,7 @@
     "@tybys/wasm-util" "^0.10.1"
 
 "@neubau-kompass/storybook-symfony-shared@file:packages/shared":
-  version "0.1.0"
+  version "0.1.1"
   dependencies:
     "@storybook/global" "5.0.0"
     fast-xml-parser "5.7.2"
