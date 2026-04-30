@@ -10,7 +10,7 @@ import { JSDOM } from 'jsdom';
 import isGlob from 'is-glob';
 import { glob } from 'glob';
 
-// node_modules/@sensiolabs/storybook-symfony-shared/dist/chunk-6633BDDN.js
+// ../shared/dist/chunk-6633BDDN.js
 var TwigComponentResolver = class {
   constructor(config) {
     this.config = config;

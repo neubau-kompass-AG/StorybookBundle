@@ -12,7 +12,7 @@ import VirtualModulesPlugin from 'webpack-virtual-modules';
 import { XMLParser } from 'fast-xml-parser';
 import crypto from 'crypto';
 
-// node_modules/@sensiolabs/storybook-symfony-shared/dist/chunk-TT62UGG3.js
+// ../shared/dist/chunk-TT62UGG3.js
 var injectPreviewHtml = (previewHtml, targetHtml) => {
   if (!targetHtml.includes("<!--PREVIEW_HEAD_PLACEHOLDER-->")) {
     throw new Error("Missing PREVIEW_HEAD_PLACEHOLDER in Storybook iframe HTML.");
@@ -389,20 +389,18 @@ var webpack = async (config, options) => {
   const framework = await options.presets.apply("framework");
   const frameworkOptions = typeof framework === "string" ? {} : framework.options;
   const symfonyOptions = await getBuildOptions(frameworkOptions.symfony || {});
+  const storybookPlugins = [
+    options.configType === "PRODUCTION" ? PreviewCompilerPlugin.webpack() : DevPreviewCompilerPlugin.webpack({
+      projectDir: symfonyOptions.projectDir,
+      additionalWatchPaths: symfonyOptions.additionalWatchPaths
+    }),
+    TwigLoaderPlugin.webpack({
+      twigComponentConfiguration: symfonyOptions.twigComponent
+    })
+  ];
   return {
     ...config,
-    plugins: [
-      ...config.plugins || [],
-      ...[
-        options.configType === "PRODUCTION" ? PreviewCompilerPlugin.webpack() : DevPreviewCompilerPlugin.webpack({
-          projectDir: symfonyOptions.projectDir,
-          additionalWatchPaths: symfonyOptions.additionalWatchPaths
-        }),
-        TwigLoaderPlugin.webpack({
-          twigComponentConfiguration: symfonyOptions.twigComponent
-        })
-      ]
-    ],
+    plugins: [...config.plugins || [], ...storybookPlugins],
     module: {
       ...config.module,
       rules: [...config.module?.rules || []]

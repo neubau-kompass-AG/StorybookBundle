@@ -1,4 +1,4 @@
-import { CALLBACK_ATTRIBUTE, ACTION_ATTRIBUTE } from './chunk-EOKNW2XD.js';
+import { CALLBACK_ATTRIBUTE, ACTION_ATTRIBUTE } from './chunk-H62Z37IB.js';
 import { SourceType, enhanceArgTypes, SNIPPET_RENDERED } from 'storybook/internal/docs-tools';
 import { logger } from 'storybook/internal/client-logger';
 import { useEffect, addons } from 'storybook/preview-api';
