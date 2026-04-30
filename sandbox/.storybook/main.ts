@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-vite";
 
 const config: StorybookConfig = {
     stories: [
@@ -47,7 +47,7 @@ const config: StorybookConfig = {
         "@storybook/addon-vitest",
     ],
     framework: {
-        name: "@sensiolabs/storybook-symfony-vite",
+        name: "@neubau-kompass/storybook-symfony-vite",
         options: {
             symfony:
                 process.env.NODE_ENV !== 'production'

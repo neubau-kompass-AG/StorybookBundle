@@ -14,10 +14,10 @@ This branch is a breaking modernization release. It targets PHP 8.4+, Symfony 8,
 
 The JavaScript integration is now split by builder:
 
-- Vite: `@sensiolabs/storybook-symfony-vite`
-- Webpack: `@sensiolabs/storybook-symfony-webpack`
+- Vite: `@neubau-kompass/storybook-symfony-vite`
+- Webpack: `@neubau-kompass/storybook-symfony-webpack`
 
-The previous `@sensiolabs/storybook-symfony-webpack5` package name and `storybook/` package directory are replaced by the new workspace layout:
+The previous `@neubau-kompass/storybook-symfony-webpack5` package name and `storybook/` package directory are replaced by the new workspace layout:
 
 - `packages/shared`
 - `packages/vite`
@@ -25,8 +25,8 @@ The previous `@sensiolabs/storybook-symfony-webpack5` package name and `storyboo
 
 Generated Composer-local file dependencies now point to:
 
-- `file:vendor/sensiolabs/storybook-bundle/packages/vite`
-- `file:vendor/sensiolabs/storybook-bundle/packages/webpack`
+- `@neubau-kompass/storybook-symfony-vite`
+- `@neubau-kompass/storybook-symfony-webpack`
 
 ## Generated Configuration
 

@@ -1,13 +1,13 @@
-import { __commonJS, __toESM, setupEventCallbacks, CALLBACK_ATTRIBUTE } from './chunk-H62Z37IB.js';
+import { __commonJS, __toESM, setupEventCallbacks, CALLBACK_ATTRIBUTE } from './chunk-3E6XYYK2.js';
 import { dedent } from 'ts-dedent';
 import { global as global$1 } from '@storybook/global';
 import { logger } from 'storybook/internal/client-logger';
 import { simulatePageLoad, addons } from 'storybook/preview-api';
 import { STORY_ERRORED, STORY_RENDER_PHASE_CHANGED } from 'storybook/internal/core-events';
 
-// ../../node_modules/he/he.js
+// ../../node_modules/.pnpm/he@1.2.0/node_modules/he/he.js
 var require_he = __commonJS({
-  "../../node_modules/he/he.js"(exports$1, module) {
+  "../../node_modules/.pnpm/he@1.2.0/node_modules/he/he.js"(exports$1, module) {
     (function(root) {
       var freeExports = typeof exports$1 == "object" && exports$1;
       var freeModule = typeof module == "object" && module && module.exports == freeExports && module;
@@ -273,7 +273,7 @@ function twig(source, ...values) {
   return new TwigTemplate(dedent(rawSource));
 }
 
-// ../shared/dist/entry-preview.js
+// node_modules/@neubau-kompass/storybook-symfony-shared/dist/entry-preview.js
 var import_he = __toESM(require_he(), 1);
 var { window: globalWindow } = global$1;
 globalWindow.STORYBOOK_ENV = "symfony";

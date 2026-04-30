@@ -32,7 +32,7 @@ $standalonePackages = $packages;
 
 $standalonePackages['config'] += ['lock' => false];
 $branchOrRev = exec('git branch --show-current') ?: exec('git rev-parse HEAD');
-$standalonePackages['require']['sensiolabs/storybook-bundle'] = \sprintf('dev-%s', $branchOrRev);
+$standalonePackages['require']['neubau-kompass/storybook-bundle'] = \sprintf('dev-%s', $branchOrRev);
 $standalonePackages['repositories'] = [
     [
         'type' => 'path',

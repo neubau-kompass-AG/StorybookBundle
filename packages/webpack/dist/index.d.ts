@@ -70,7 +70,7 @@ type Preview = ProjectAnnotations<SymfonyRenderer>;
 declare const render: ArgsStoryFn<SymfonyRenderer>;
 declare function renderToCanvas({ id, showMain, storyFn, storyContext, storyContext: { parameters, args, argTypes }, }: RenderContext<SymfonyRenderer>, canvasElement: SymfonyRenderer['canvasElement']): Promise<void>;
 
-type FrameworkName = '@sensiolabs/storybook-symfony-webpack';
+type FrameworkName = '@neubau-kompass/storybook-symfony-webpack';
 type BuilderName = '@storybook/builder-webpack5';
 type ProxyPaths = string[] | string;
 type SymfonyOptions = {

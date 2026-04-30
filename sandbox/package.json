@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@sensiolabs/storybook-symfony-vite": "file:vendor/sensiolabs/storybook-bundle/packages/vite",
+        "@neubau-kompass/storybook-symfony-vite": "file:vendor/neubau-kompass/storybook-bundle/packages/vite",
         "@storybook/addon-docs": "10.3.5",
         "@storybook/addon-vitest": "10.3.5",
         "@storybook/global": "5.0.0",

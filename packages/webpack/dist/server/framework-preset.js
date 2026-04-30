@@ -12,7 +12,7 @@ import VirtualModulesPlugin from 'webpack-virtual-modules';
 import { XMLParser } from 'fast-xml-parser';
 import crypto from 'crypto';
 
-// ../shared/dist/chunk-TT62UGG3.js
+// node_modules/@neubau-kompass/storybook-symfony-shared/dist/chunk-TT62UGG3.js
 var injectPreviewHtml = (previewHtml, targetHtml) => {
   if (!targetHtml.includes("<!--PREVIEW_HEAD_PLACEHOLDER-->")) {
     throw new Error("Missing PREVIEW_HEAD_PLACEHOLDER in Storybook iframe HTML.");

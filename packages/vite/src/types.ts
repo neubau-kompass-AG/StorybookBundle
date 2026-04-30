@@ -1,7 +1,7 @@
 import type { StorybookConfig as StorybookConfigBase } from 'storybook/internal/types';
 import type { UserConfig as ViteConfig } from 'vite';
 
-type FrameworkName = '@sensiolabs/storybook-symfony-vite';
+type FrameworkName = '@neubau-kompass/storybook-symfony-vite';
 
 type ProxyPaths = string[] | string;
 

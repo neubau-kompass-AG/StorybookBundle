@@ -1,1 +1,1 @@
-export * from '@sensiolabs/storybook-symfony-shared/entry-preview-docs';
+export * from '@neubau-kompass/storybook-symfony-shared/entry-preview-docs';

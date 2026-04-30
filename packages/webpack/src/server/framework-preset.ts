@@ -1,8 +1,8 @@
 import { StorybookConfig } from '../types';
-import { PreviewCompilerPlugin } from '@sensiolabs/storybook-symfony-shared/server/lib/preview-compiler-plugin';
-import { DevPreviewCompilerPlugin } from '@sensiolabs/storybook-symfony-shared/server/lib/dev-preview-compiler-plugin';
-import { TwigLoaderPlugin } from '@sensiolabs/storybook-symfony-shared/server/lib/twig-loader-plugin';
-import { getBuildOptions } from '@sensiolabs/storybook-symfony-shared/server/framework-options';
+import { PreviewCompilerPlugin } from '@neubau-kompass/storybook-symfony-shared/server/lib/preview-compiler-plugin';
+import { DevPreviewCompilerPlugin } from '@neubau-kompass/storybook-symfony-shared/server/lib/dev-preview-compiler-plugin';
+import { TwigLoaderPlugin } from '@neubau-kompass/storybook-symfony-shared/server/lib/twig-loader-plugin';
+import { getBuildOptions } from '@neubau-kompass/storybook-symfony-shared/server/framework-options';
 import { PresetProperty } from 'storybook/internal/types';
 import { dedent } from 'ts-dedent';
 import type { Configuration } from 'webpack';

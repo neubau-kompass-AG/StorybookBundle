@@ -69,7 +69,7 @@ type Preview = ProjectAnnotations<SymfonyRenderer>;
 declare const render: ArgsStoryFn<SymfonyRenderer>;
 declare function renderToCanvas({ id, showMain, storyFn, storyContext, storyContext: { parameters, args, argTypes }, }: RenderContext<SymfonyRenderer>, canvasElement: SymfonyRenderer['canvasElement']): Promise<void>;
 
-type FrameworkName = '@sensiolabs/storybook-symfony-vite';
+type FrameworkName = '@neubau-kompass/storybook-symfony-vite';
 type ProxyPaths = string[] | string;
 type SymfonyOptions = {
     /**

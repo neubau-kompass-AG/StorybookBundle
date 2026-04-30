@@ -89,7 +89,7 @@ To use [Live Components](https://symfony.com/bundles/ux-live-component/current/i
 
 const config: StorybookConfig = {
   framework: {
-    name: "@sensiolabs/storybook-symfony-vite",
+    name: "@neubau-kompass/storybook-symfony-vite",
     options: {
       // ...
       symfony: {
@@ -129,7 +129,7 @@ Standard HMR does not cover AssetMapper files. To register additional paths and 
 
 const config: StorybookConfig = {
   framework: {
-    name: "@sensiolabs/storybook-symfony-vite",
+    name: "@neubau-kompass/storybook-symfony-vite",
     options: {
       // ...
       symfony: {
@@ -162,7 +162,7 @@ If you use [TailwindBundle](https://symfony.com/bundles/TailwindBundle/current/i
 
 const config: StorybookConfig = {
   framework: {
-    name: "@sensiolabs/storybook-symfony-vite",
+    name: "@neubau-kompass/storybook-symfony-vite",
     options: {
       // ...
       symfony: {
@@ -214,7 +214,7 @@ The examples below use Vite because it is the default generated builder. Webpack
 
 ```ts
 // .storybook/main.ts
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-vite";
 
 /**
  * Main Storybook configuration.
@@ -239,7 +239,7 @@ const config: StorybookConfig = {
 
   framework: {
     // Tell Storybook to use the Symfony framework.
-    name: "@sensiolabs/storybook-symfony-vite",
+    name: "@neubau-kompass/storybook-symfony-vite",
     options: {
       /**
        * Symfony framework options.
@@ -284,13 +284,13 @@ For Webpack:
 
 ```ts
 // .storybook/main.ts
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack";
+import type { StorybookConfig } from "@neubau-kompass/storybook-symfony-webpack";
 
 const config: StorybookConfig = {
   stories: ["../templates/components/**/*.stories.[tj]s"],
   addons: ["@storybook/addon-docs"],
   framework: {
-    name: "@sensiolabs/storybook-symfony-webpack",
+    name: "@neubau-kompass/storybook-symfony-webpack",
     options: {
       symfony: {
         server: "http://localhost:8000",

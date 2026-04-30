@@ -13,7 +13,7 @@ The following example tests a _Counter_ component that increments a count on but
 ```js
 // stories/Counter.stories.js
 import Counter from "../templates/components/Counter.html.twig";
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 import { userEvent, waitFor, within, expect, fn } from "storybook/test";
 
 export default {

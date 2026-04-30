@@ -50,7 +50,7 @@ Use a custom Twig template when a story needs more control over how args are ren
 ```js
 // stories/Button.stories.js
 import Button from "../templates/components/Button.html.twig";
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 
 export default {
   render: (args) => ({
@@ -93,7 +93,7 @@ You can also provide a raw Twig template as a component when the story does not 
 
 ```js
 // stories/Button.stories.js
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 
 export default {
   component: twig`<button type="button">{{ label }}</button>`,
@@ -116,7 +116,7 @@ Consider the following story:
 
 ```js
 import Button from "../templates/components/Button.html.twig";
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 
 export default {
   render: (args) => ({

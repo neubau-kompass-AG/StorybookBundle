@@ -30,7 +30,7 @@ When a story provides a custom template, reference the action arg with the `data
 // stories/Button.stories.js
 import Button from "../templates/components/Button.html.twig";
 import { fn } from "storybook/test";
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 
 export default {
   render: (args) => ({
@@ -60,7 +60,7 @@ You can use the `_context` variable instead:
 // stories/Counter.stories.js
 import Counter from "../templates/components/Counter.html.twig";
 import { fn } from "storybook/test";
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 
 export default {
   render: (args) => ({
@@ -91,7 +91,7 @@ With a custom template, output each action arg in the `data-storybook-callbacks`
 ```js
 import Toggle from "../templates/components/Toggle.html.twig";
 import { fn } from "storybook/test";
-import { twig } from "@sensiolabs/storybook-symfony-vite";
+import { twig } from "@neubau-kompass/storybook-symfony-vite";
 
 export default {
   render: (args) => ({

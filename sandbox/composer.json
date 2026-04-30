@@ -7,7 +7,7 @@
         "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "sensiolabs/storybook-bundle": "dev-main",
+        "neubau-kompass/storybook-bundle": "dev-main",
         "symfony/asset": "8.0.*",
         "symfony/asset-mapper": "8.0.*",
         "symfony/console": "8.0.*",
