@@ -41,6 +41,22 @@ class StorybookInitCommandTest extends KernelTestCase
         return Path::join(\dirname(__DIR__, 3), ...$parts);
     }
 
+    /**
+     * @return array<string, mixed>
+     *
+     * @throws \JsonException
+     */
+    private function readJsonObject(string $file): array
+    {
+        $contents = file_get_contents($file);
+        $this->assertNotFalse($contents, \sprintf('Unable to read "%s".', $file));
+
+        $data = json_decode($contents, true, flags: \JSON_THROW_ON_ERROR);
+        $this->assertIsArray($data);
+
+        return $data;
+    }
+
     private function getCommandTester(): CommandTester
     {
         $application = new Application(self::$kernel);
@@ -101,11 +117,12 @@ class StorybookInitCommandTest extends KernelTestCase
         $commandTester->assertCommandIsSuccessful();
 
         $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
+        $this->assertNotFalse($main);
         $this->assertStringContainsString('@neubau-kompass/storybook-symfony-vite', $main);
         $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
 
-        $packageJson = json_decode(file_get_contents($this->projectPath('package.json')), true, flags: \JSON_THROW_ON_ERROR);
-        $vitePackageJson = json_decode(file_get_contents($this->repositoryPath('packages', 'vite', 'package.json')), true, flags: \JSON_THROW_ON_ERROR);
+        $packageJson = $this->readJsonObject($this->projectPath('package.json'));
+        $vitePackageJson = $this->readJsonObject($this->repositoryPath('packages', 'vite', 'package.json'));
         $this->assertSame('^'.$vitePackageJson['version'], $packageJson['devDependencies']['@neubau-kompass/storybook-symfony-vite']);
 
         $this->assertFileExists($this->projectPath('vitest.config.ts'));
@@ -159,11 +176,12 @@ class StorybookInitCommandTest extends KernelTestCase
         $commandTester->assertCommandIsSuccessful();
 
         $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
+        $this->assertNotFalse($main);
         $this->assertStringContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
         $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-vite', $main);
 
-        $packageJson = json_decode(file_get_contents($this->projectPath('package.json')), true, flags: \JSON_THROW_ON_ERROR);
-        $webpackPackageJson = json_decode(file_get_contents($this->repositoryPath('packages', 'webpack', 'package.json')), true, flags: \JSON_THROW_ON_ERROR);
+        $packageJson = $this->readJsonObject($this->projectPath('package.json'));
+        $webpackPackageJson = $this->readJsonObject($this->repositoryPath('packages', 'webpack', 'package.json'));
         $this->assertSame('^'.$webpackPackageJson['version'], $packageJson['devDependencies']['@neubau-kompass/storybook-symfony-webpack']);
     }
 
