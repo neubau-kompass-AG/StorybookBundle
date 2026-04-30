@@ -1,4 +1,4 @@
-import { __commonJS, __toESM, setupEventCallbacks, CALLBACK_ATTRIBUTE } from './chunk-EOKNW2XD.js';
+import { __commonJS, __toESM, setupEventCallbacks, CALLBACK_ATTRIBUTE } from './chunk-H62Z37IB.js';
 import { dedent } from 'ts-dedent';
 import { global as global$1 } from '@storybook/global';
 import { logger } from 'storybook/internal/client-logger';
@@ -273,7 +273,7 @@ function twig(source, ...values) {
   return new TwigTemplate(dedent(rawSource));
 }
 
-// node_modules/@sensiolabs/storybook-symfony-shared/dist/entry-preview.js
+// ../shared/dist/entry-preview.js
 var import_he = __toESM(require_he(), 1);
 var { window: globalWindow } = global$1;
 globalWindow.STORYBOOK_ENV = "symfony";
@@ -463,18 +463,22 @@ var configureLiveComponentErrorCatcher = (storyId, canvasElement) => {
 ${title}` });
   };
   liveComponentHosts.forEach(
-    (el) => el.addEventListener("live:connect", () => {
-      if ("__component" in el) {
-        const component = el.__component;
-        component.on("response:error", errorHandler);
-      } else {
-        logger.warn(dedent`
+    (el) => el.addEventListener(
+      "live:connect",
+      () => {
+        if ("__component" in el) {
+          const component = el.__component;
+          component.on("response:error", errorHandler);
+        } else {
+          logger.warn(dedent`
                     Failed to configure error handler for LiveComponent. The "__component" property is missing from the element.
                     It's likely to be an issue with the Symfony Storybook framework. Check the concerned element below:
                     `);
-        logger.warn(el);
-      }
-    }, { once: true })
+          logger.warn(el);
+        }
+      },
+      { once: true }
+    )
   );
 };
 var parameters = {

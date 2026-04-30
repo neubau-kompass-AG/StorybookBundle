@@ -24,7 +24,7 @@ export default defineConfig(async (options) => {
         splitting: true,
         format: ['esm'],
         treeshake: true,
-        clean: !options.watch,
+        clean: false,
         external: [/^storybook(\/.*)?$/, /^@storybook\/.*/],
     };
 

@@ -56,7 +56,7 @@ export const start: typeof baseBuilder.start = async (options) => {
     return baseBuilder.start(options);
 };
 
-export const build = baseBuilder.build;
+export const build: typeof baseBuilder.build = baseBuilder.build;
 
 export const corePresets = baseBuilder.corePresets;
 export const overridePresets = baseBuilder.overridePresets;
