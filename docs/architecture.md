@@ -90,11 +90,21 @@ composer install
 npm install
 ```
 
+The JavaScript workspace also supports pnpm, Yarn, and Bun:
+
+```shell
+pnpm install
+yarn install
+bun install
+```
+
 Build all JavaScript packages:
 
 ```shell
 npm run build
 ```
+
+The equivalent package-manager commands are `pnpm build`, `yarn build`, and `bun run build`.
 
 The root script runs the same package script in `packages/shared`, `packages/vite`, and `packages/webpack`. The generated `dist/` files are committed because the Composer package is used from path dependencies during local and sandbox development.
 

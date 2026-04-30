@@ -124,14 +124,45 @@ See [Vite and Webpack Builders](docs/builders.md) for full configuration example
 
 ## Package Managers and Lockfiles
 
-The repo supports npm, pnpm, Yarn, and Bun for contributor workflows. `package.json` is the shared dependency contract and direct JavaScript dependencies are pinned exactly for stability. Each package manager has its own committed lockfile because each one resolves, stores, and links packages differently:
+The repo supports npm, pnpm, Yarn, and Bun for contributor workflows. `package.json` is the shared dependency contract and direct JavaScript dependencies are pinned exactly for stability.
+
+There are multiple committed lockfiles on purpose. They let contributors and CI verify that the same dependency contract installs cleanly with every supported package manager. Each manager has its own lockfile because npm, pnpm, Yarn, and Bun resolve peer dependencies, store packages, and link workspaces differently:
 
 - `package-lock.json`
 - `pnpm-lock.yaml`
 - `yarn.lock`
 - `bun.lock`
 
-Refresh lockfiles with:
+For day-to-day work, install with whichever supported manager you are using:
+
+```shell
+npm install
+pnpm install
+yarn install
+bun install
+```
+
+The root build, test, lint, and format scripts are manager-compatible:
+
+```shell
+npm run build
+pnpm build
+yarn build
+bun run build
+
+npm run test
+pnpm test
+yarn test
+bun run test
+```
+
+When JavaScript dependencies change, refresh all committed lockfiles before opening a pull request:
+
+```shell
+npm run lock:update
+```
+
+You can also refresh a single lockfile:
 
 ```shell
 npm run lock:update:npm

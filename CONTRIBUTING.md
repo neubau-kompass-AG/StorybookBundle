@@ -19,15 +19,36 @@ npm install
 The JavaScript workspace supports npm, pnpm, Yarn, and Bun. npm is the baseline command used in examples because it is available with Node.js, but the root scripts also work through the other supported package managers:
 
 ```shell
+npm install
 pnpm install
 yarn install
 bun install
 ```
 
+The repository intentionally commits one lockfile per supported package manager:
+
+| Lockfile | Package manager |
+|----------|-----------------|
+| `package-lock.json` | npm |
+| `pnpm-lock.yaml` | pnpm |
+| `yarn.lock` | Yarn |
+| `bun.lock` | Bun |
+
+These lockfiles are not duplicates. They verify that the same `package.json` dependency contract works with each supported installer, whose peer dependency resolution, package store, and workspace linking behaviour differ.
+
 Keep all committed lockfiles in sync when changing JavaScript dependencies:
 
 ```shell
 npm run lock:update
+```
+
+The root scripts are expected to run through every supported manager:
+
+```shell
+npm run build
+pnpm build
+yarn build
+bun run build
 ```
 
 ## Package Layout
