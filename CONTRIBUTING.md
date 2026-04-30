@@ -42,6 +42,8 @@ The Composer package remains the Symfony bundle. The Storybook framework code li
 
 `packages/shared` is internal to this repository. The Vite and Webpack packages inline the shared runtime in their built `dist/` output.
 
+For a fuller explanation of the runtime model, package boundaries, generated config, sandbox modes, and verification workflow, read [`docs/architecture.md`](docs/architecture.md).
+
 ## Compile TypeScript Modules
 
 Use the root build command before submitting a pull request:
@@ -106,9 +108,13 @@ Run the PHP checks from the repository root:
 
 ```shell
 composer validate --strict
+vendor/bin/php-cs-fixer fix --dry-run --diff
 vendor/bin/simple-phpunit
-vendor/bin/phpstan analyse
+vendor/bin/phpstan analyse --memory-limit=1G
+vendor/bin/phpactor worse:analyse . --ignore-failure
 ```
+
+PHPactor is installed as an isolated Composer bin tool. Its dependency graph is intentionally separate from the bundle because PHPactor currently depends on older Symfony Console constraints than the bundle itself.
 
 ### JavaScript
 

@@ -9,6 +9,8 @@ To build Storybook, use:
 npm run build-storybook
 ```
 
+Production builds do not require the `symfony.server` framework option. The static output still needs access to the Symfony application at runtime for render, asset, and Live Component requests. Deploy it behind a reverse proxy that forwards unmatched Symfony routes to the Symfony server and sets the `X-Storybook-Proxy: true` header.
+
 This will create a `storybook-static` directory:
 ```text
 ./storybook-static/
@@ -27,7 +29,7 @@ This will create a `storybook-static` directory:
 
 ## Deploy Storybook
 
-The simplest way to deploy Storybook is to bundle the application in a Docker image. The webserver should serve Storybook static files, and use a reverse-proxy to forward other requests to the webserver hosting the Symfony application. 
+The simplest way to deploy Storybook is to bundle the application in a Docker image. The web server should serve Storybook static files and use a reverse proxy to forward other requests to the web server hosting the Symfony application.
 
 For example with Caddy:
 
@@ -73,10 +75,10 @@ Then build and run the image:
 ```shell
 docker build -t my-app-storybook .
 
-docker run -d -p 80:80 -p 443:443 \ 
-  -e SERVER_NAME=localhost \ 
+docker run -d -p 80:80 -p 443:443 \
+  -e SERVER_NAME=localhost \
   -e SYMFONY_SERVER_NAME=my-app.example.com \
   -v caddy_data:/data \
-  -v caddy_config:/config \ 
-  my-app-storybook 
+  -v caddy_config:/config \
+  my-app-storybook
 ```

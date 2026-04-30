@@ -209,14 +209,16 @@ storybook:
         # Properties that are allowed in stories.
         allowedProperties: {}
             # Example:
-            # App\MyVariable: ['foo', 'bar'] 
+            # App\MyVariable: ['foo', 'bar']
         # Methods that are allowed in stories.
         allowedMethods: {}
           # Example:
-          # App\MyVariable: ['someMethod', 'getBaz'] 
+          # App\MyVariable: ['someMethod', 'getBaz']
 ```
 
 ### Storybook Framework
+
+The examples below use Vite because it is the default generated builder. Webpack accepts the same `symfony` options; only the imported type and `framework.name` change.
 
 ```ts
 // .storybook/main.ts
@@ -229,7 +231,7 @@ const config: StorybookConfig = {
 
     /**
      * Stories specifier.
-     * 
+     *
      * @see https://storybook.js.org/docs/configure#configure-your-storybook-project
      */
     stories: [
@@ -239,37 +241,37 @@ const config: StorybookConfig = {
 
     /**
      * Addons configuration.
-     * 
+     *
      * @see https://storybook.js.org/docs/configure#configure-your-storybook-project
      */
     addons: [
         "@storybook/addon-docs",
         "@storybook/addon-vitest",
     ],
-    
+
     framework: {
         // 👇 Tell Storybook to use the Symfony framework
         name: "@sensiolabs/storybook-symfony-vite",
         options: {
-            
+
             /**
              * Symfony framework options.
-             * 
-             * These options only applies to the dev environment.
+             *
+             * These options only apply to the dev environment.
              */
             symfony: {
                 /**
                  * Mandatory, the URL of the Symfony development server.
-                 * 
+                 *
                  * @var string
                  */
                 server: 'http://localhost:8000',
-                
+
                 /**
                  * URLs that should be proxied to the Symfony server.
-                 * 
+                 *
                  * Useful to resolve assets and re-render LiveComponents.
-                 * 
+                 *
                  * @var string[]
                  */
                 proxyPaths: [
@@ -279,10 +281,10 @@ const config: StorybookConfig = {
 
                 /**
                  * Additional paths where changes should re-trigger compilation.
-                 * 
-                 * Use this if your stories depends on modules that are not part 
+                 *
+                 * Use this if your stories depend on modules that are not part
                  * of the JavaScript compilation (e.g. with AssetMapper and TailwindBundle).
-                 * 
+                 *
                  * @var string[]
                  */
                 additionalWatchPaths: [
@@ -296,3 +298,41 @@ const config: StorybookConfig = {
 
 export default config;
 ```
+
+For Webpack:
+
+```ts
+// .storybook/main.ts
+import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack";
+
+const config: StorybookConfig = {
+    stories: [
+        "../templates/components/**/*.stories.[tj]s",
+    ],
+    addons: [
+        "@storybook/addon-docs",
+    ],
+    framework: {
+        name: "@sensiolabs/storybook-symfony-webpack",
+        options: {
+            symfony: {
+                server: "http://localhost:8000",
+                proxyPaths: [
+                    "/assets",
+                    "/_components",
+                ],
+                additionalWatchPaths: [
+                    "assets",
+                    "var/tailwind/tailwind.built.css",
+                ],
+            },
+        },
+    },
+};
+
+export default config;
+```
+
+The Vite and Webpack packages export matching `StorybookConfig` and `Preview` types. Import them from the package selected by `framework.name`.
+
+See [Vite and Webpack Builders](builders.md) for builder choice guidance and production-build notes.

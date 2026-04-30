@@ -21,11 +21,13 @@ This bundle integrates Storybook 10 with Symfony and Twig Components. It ships f
 1. [Installation](#installation)
 2. [Upgrade Guide](UPGRADE.md)
 3. [Getting Started](docs/getting-started.md)
-4. [Configuration](docs/configuration.md)
+4. [Architecture](docs/architecture.md)
+5. [Vite and Webpack Builders](docs/builders.md)
+6. [Configuration](docs/configuration.md)
    1. [Twig Rendering](docs/configuration.md#twig-rendering)
    2. [Symfony UX Packages](docs/configuration.md#symfony-ux-packages)
    3. [Configuration Reference](docs/configuration.md#configuration-reference)
-5. [Storybook Features](docs/features.md)
+7. [Storybook Features](docs/features.md)
    1. Stories
       1. [Writing Stories](docs/features/csf-stories.md)
       2. [Docs](docs/features/docs.md)
@@ -33,9 +35,9 @@ This bundle integrates Storybook 10 with Symfony and Twig Components. It ships f
    2. Addons
       1. [Actions](docs/addons/actions.md)
       2. [Interactions](docs/addons/interactions.md)
-6. [Args Processors](docs/args-processors.md)
-7. [Component Mock](docs/component-mock.md)
-8. [Static Build](docs/static-build.md)
+8. [Args Processors](docs/args-processors.md)
+9. [Component Mock](docs/component-mock.md)
+10. [Static Build](docs/static-build.md)
 
 ## Installation
 
@@ -85,7 +87,7 @@ npm run storybook
 # or: bun run storybook
 ```
 
-## Composer And JavaScript Packages
+## Composer and JavaScript Packages
 
 The Composer package remains `sensiolabs/storybook-bundle`. It provides the Symfony bundle, render endpoint, Twig sandboxing, component integration, and the `storybook:init` command.
 
@@ -118,7 +120,9 @@ This uses `@sensiolabs/storybook-symfony-webpack`. The package targets Webpack 5
 
 Generated installs no longer include legacy empty or deprecated addon packages such as `@storybook/addon-essentials`, `@storybook/addon-links`, `@storybook/blocks`, or `@storybook/addon-interactions`. The old link addon sandbox stories were removed with that package set.
 
-## Package Managers And Lockfiles
+See [Vite and Webpack Builders](docs/builders.md) for full configuration examples and [Architecture](docs/architecture.md) for how the Composer bundle and JavaScript packages fit together.
+
+## Package Managers and Lockfiles
 
 The repo supports npm, pnpm, Yarn, and Bun for contributor workflows. `package.json` is the shared dependency contract and direct JavaScript dependencies are pinned exactly for stability. Each package manager has its own committed lockfile because each one resolves, stores, and links packages differently:
 
