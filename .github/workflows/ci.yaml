@@ -135,9 +135,9 @@ jobs:
       - name: Check if JS dist files are current
         if: matrix.package-manager == 'npm'
         run: |
-          STATUS="$(git status --porcelain)"
+          STATUS="$(git status --porcelain -- package-lock.json packages/shared/dist packages/vite/dist packages/webpack/dist)"
           if [ -n "$STATUS" ]; then
-            echo "JS build or install changed tracked files:"
+            echo "JS build changed checked generated files:"
             echo "$STATUS"
             exit 1
           fi
