@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: "0 */12 * * *"
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   composer-validate:
     name: Validate composer.json
@@ -62,9 +65,10 @@ jobs:
       - name: Cache Composer downloads
         uses: actions/cache@v4
         with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-php-${{ matrix.php }}-${{ hashFiles('composer.lock') }}
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-phpstan-composer-php-${{ matrix.php }}-${{ hashFiles('composer.json') }}
           restore-keys: |
+            ${{ runner.os }}-phpstan-composer-php-${{ matrix.php }}-
             ${{ runner.os }}-composer-php-${{ matrix.php }}-
             ${{ runner.os }}-composer-
       - name: Install composer dependencies
@@ -199,9 +203,10 @@ jobs:
       - name: Cache Composer downloads
         uses: actions/cache@v4
         with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-php-${{ matrix.php }}-${{ hashFiles('composer.lock') }}
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-phpunit-composer-php-${{ matrix.php }}-${{ hashFiles('composer.json') }}
           restore-keys: |
+            ${{ runner.os }}-phpunit-composer-php-${{ matrix.php }}-
             ${{ runner.os }}-composer-php-${{ matrix.php }}-
             ${{ runner.os }}-composer-
       - name: Install composer dependencies
@@ -225,9 +230,10 @@ jobs:
       - name: Cache Composer downloads
         uses: actions/cache@v4
         with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-php-${{ matrix.php }}-${{ hashFiles('composer.lock', 'sandbox/composer.json') }}
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-storybook-composer-php-${{ matrix.php }}-${{ hashFiles('sandbox/composer.json', 'sandbox/bin/setup-standalone') }}
           restore-keys: |
+            ${{ runner.os }}-storybook-composer-php-${{ matrix.php }}-
             ${{ runner.os }}-composer-php-${{ matrix.php }}-
             ${{ runner.os }}-composer-
       - name: Setup Node
@@ -238,8 +244,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-24-sandbox-npm-${{ hashFiles('sandbox/package.json') }}
+          key: ${{ runner.os }}-node-24-php-${{ matrix.php }}-sandbox-npm-${{ hashFiles('sandbox/package.json') }}
           restore-keys: |
+            ${{ runner.os }}-node-24-php-${{ matrix.php }}-sandbox-npm-
             ${{ runner.os }}-node-24-sandbox-npm-
       - name: Configure sandbox app
         run: ./sandbox/bin/setup-standalone
@@ -247,8 +254,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('sandbox/package.json') }}
+          key: ${{ runner.os }}-php-${{ matrix.php }}-playwright-${{ hashFiles('sandbox/package.json') }}
           restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php }}-playwright-
             ${{ runner.os }}-playwright-
       - name: Install Playwright
         run: npx playwright install --with-deps
