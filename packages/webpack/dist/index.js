@@ -30,9 +30,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// ../../node_modules/.pnpm/he@1.2.0/node_modules/he/he.js
+// ../../node_modules/he/he.js
 var require_he = __commonJS({
-  "../../node_modules/.pnpm/he@1.2.0/node_modules/he/he.js"(exports$1, module) {
+  "../../node_modules/he/he.js"(exports$1, module) {
     (function(root) {
       var freeExports = typeof exports$1 == "object" && exports$1;
       var freeModule = typeof module == "object" && module && module.exports == freeExports && module;
