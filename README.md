@@ -9,7 +9,7 @@
 [![Symfony](https://img.shields.io/badge/Symfony-%5E8.0-000000?style=flat-square)](https://symfony.com/releases)
 [![Storybook](https://img.shields.io/badge/Storybook-%5E10-ff4785?style=flat-square)](https://storybook.js.org/)
 [![Node](https://img.shields.io/badge/Node-%3E%3D20.19-43853d?style=flat-square)](https://nodejs.org/)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENCE)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 This bundle integrates Storybook 10 with Symfony and Twig Components. It ships first-class Vite and Webpack framework packages, with Vite as the default generated setup.
 
