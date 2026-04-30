@@ -1,3 +1,5 @@
+# Component Mocks
+
 ## Mocking Twig components
 
 One of the powerful features of Twig components is to use dependency injection to inject services (like Doctrine repositories) and consume them in property getters and other methods. Let's take the [`FeaturedProducts`](https://symfony.com/bundles/ux-twig-component/current/index.html#fetching-services) component from the official documentation:

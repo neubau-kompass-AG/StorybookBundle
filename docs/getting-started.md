@@ -3,7 +3,7 @@
 Once you installed the bundle and its dependencies as described in the [Installation](../README.md#installation) page,
 you can start writing your first stories.
 
-We assume you are using Symfony UX packages with the LAST stack architecture and Tailwind.
+We assume you are using Symfony UX packages with the [LAST stack](https://symfony.com/doc/current/frontend.html) architecture (Live Components, AssetMapper, Stimulus, Twig Components) and Tailwind.
 
 ## Choose stories locations
 
@@ -19,7 +19,7 @@ Update your `.storybook/main.ts` configuration file accordingly:
 ```ts
 // .storybook/main.ts
 
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack5";
+import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
 
 const config: StorybookConfig = {
     stories: [
@@ -132,29 +132,7 @@ Now you can control your component's props from the Storybook UI!
 
 Let's reuse our Button component to create a Counter that increases a value when clicked.
 
-First, install some new packages:
-
-```shell
-npm install -D @storybook/test @storybook/addon-interactions 
-```
-
-Enable the Interactions addon in the main configuration:
-```ts
-// .storybook/main.ts
-
-const config: StorybookConfig = {
-    addons: [
-        "@storybook/addon-webpack5-compiler-swc",
-        "@storybook/addon-links",
-        "@storybook/addon-essentials",
-        // 👇 Register the addon here
-        "@storybook/addon-interactions",
-    ],
-    // ...
-};
-```
-
-Then restart Storybook.
+Storybook 10 exposes testing helpers from the `storybook/test` entrypoint. No separate interactions addon is required.
 
 Now add the Counter template and its Stimulus controller: 
 
@@ -201,7 +179,7 @@ Now create a story for this new component and add a play function:
 // templates/components/Counter.stories.js
 
 import Counter from './Counter.html.twig';
-import { userEvent, within } from '@storybook/test';
+import { userEvent, within } from 'storybook/test';
 
 export default {
     component: Counter,
@@ -225,7 +203,7 @@ Navigate to the new story in the Storybook UI, and...
 The play function simulated a click on the button. But... The counter still shows 0. That's because our controller didn't update the HTML. It's a bug we could have detected if we had made an assertion about  it:
 
 ```js
-import {userEvent, waitFor, within, expect} from '@storybook/test';
+import {userEvent, waitFor, within, expect} from 'storybook/test';
 
 // ...
 
@@ -299,7 +277,7 @@ And update the story to add a spy on the `counter:increment` event:
 ```js
 // templates/components/Counter.stories.js
 
-import {userEvent, waitFor, within, expect, fn} from '@storybook/test';
+import {userEvent, waitFor, within, expect, fn} from 'storybook/test';
 
 // ...
 
@@ -329,4 +307,3 @@ Now your play function ensures the event has been dispatched:
 And you can grab some details about the event in the Actions panel:
 
 ![counter_action_event_details.png](img/getting-started/counter_action_event_details.png)
-

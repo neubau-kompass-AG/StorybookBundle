@@ -93,7 +93,7 @@ Storybook `main.ts|js` configuration:
 
 const config: StorybookConfig = {
     framework: {
-        name: "@sensiolabs/storybook-symfony-webpack5",
+        name: "@sensiolabs/storybook-symfony-vite",
         options: {
             // ...
             symfony: {
@@ -134,7 +134,7 @@ Though, standard HMR will not work properly with AssetMapper. To register additi
 
 const config: StorybookConfig = {
     framework: {
-        name: "@sensiolabs/storybook-symfony-webpack5",
+        name: "@sensiolabs/storybook-symfony-vite",
         options: {
             // ...
             symfony: {
@@ -168,7 +168,7 @@ preview is refreshed with HMR on change:
 
 const config: StorybookConfig = {
     framework: {
-        name: "@sensiolabs/storybook-symfony-webpack5",
+        name: "@sensiolabs/storybook-symfony-vite",
         options: {
             // ...
             symfony: {
@@ -220,7 +220,7 @@ storybook:
 
 ```ts
 // .storybook/main.ts
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack5";
+import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
 
 /**
  * Main Storybook configuration.
@@ -243,14 +243,13 @@ const config: StorybookConfig = {
      * @see https://storybook.js.org/docs/configure#configure-your-storybook-project
      */
     addons: [
-        // 👇 This is required for TypeScript config files
-        "@storybook/addon-webpack5-compiler-swc",
-        // Other addons...
+        "@storybook/addon-docs",
+        "@storybook/addon-vitest",
     ],
     
     framework: {
         // 👇 Tell Storybook to use the Symfony framework
-        name: "@sensiolabs/storybook-symfony-webpack5",
+        name: "@sensiolabs/storybook-symfony-vite",
         options: {
             
             /**
@@ -264,7 +263,7 @@ const config: StorybookConfig = {
                  * 
                  * @var string
                  */
-                server: 'http://localhost',
+                server: 'http://localhost:8000',
                 
                 /**
                  * URLs that should be proxied to the Symfony server.

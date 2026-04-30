@@ -12,14 +12,14 @@ Here is an example of play function:
 
 ```js
 import Button from './Button.html.twig';
-import {userEvent, within} from '@storybook/test';
+import {userEvent, within} from 'storybook/test';
 
 export default {
     component: Button
 }
 
-export default ClickedButton = {
-    play: async (canvasElement) => {
+export const ClickedButton = {
+    play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         const button = canvas.getByRole('button');
 

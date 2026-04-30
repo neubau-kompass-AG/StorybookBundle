@@ -12,38 +12,16 @@ npm run build-storybook
 This will create a `storybook-static` directory:
 ```text
 ./storybook-static/
-├── 230.5744d375.iframe.bundle.js
-├── 260.a0fcd16a.iframe.bundle.js
-├── 294.1615ff58.iframe.bundle.js
-├── 33.b34bb2e3.iframe.bundle.js
-├── 33.b34bb2e3.iframe.bundle.js.map
-├── 414.b5e0bef5.iframe.bundle.js
-├── 62.3b614862.iframe.bundle.js
-├── 694.eaea88c7.iframe.bundle.js
-├── 694.eaea88c7.iframe.bundle.js.LICENSE.txt
-├── 694.eaea88c7.iframe.bundle.js.map
-├── 956.9bb662f7.iframe.bundle.js
-├── 981.dcbbae55.iframe.bundle.js
-├── app-ProductList-stories.759d41de.iframe.bundle.js
 ├── favicon.svg
 ├── iframe.html
 ├── index.html
 ├── index.json
-├── library-Button-stories.fa586cfc.iframe.bundle.js
-├── library-Pagination-stories.8725b52b.iframe.bundle.js
-├── library-SearchBar-stories.9c6220df.iframe.bundle.js
-├── library-Table-mdx.74d8d377.iframe.bundle.js
-├── library-Table-mdx.74d8d377.iframe.bundle.js.LICENSE.txt
-├── library-Table-stories.056dd1c2.iframe.bundle.js
-├── main.238705ce.iframe.bundle.js
-├── main.238705ce.iframe.bundle.js.LICENSE.txt
-├── main.238705ce.iframe.bundle.js.map
 ├── project.json
-├── runtime~main.ffd941f6.iframe.bundle.js
 ├── sb-addons/
 ├── sb-common-assets/
 ├── sb-manager/
-└── sb-preview/
+├── sb-preview/
+└── assets/
 
 ```
 
@@ -102,4 +80,3 @@ docker run -d -p 80:80 -p 443:443 \
   -v caddy_config:/config \ 
   my-app-storybook 
 ```
-

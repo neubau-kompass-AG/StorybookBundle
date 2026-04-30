@@ -11,7 +11,7 @@ To set up an action in a Twig template, you can use the `fn()` spy in an arg:
 ```js
 // stories/Button.stories.js
 import Button from '../templates/components/Button.html.twig';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 
 export default {
     component: Button
@@ -29,11 +29,11 @@ When providing a template for the story, you have to reference your action arg i
 ```js
 // stories/Button.stories.js
 import Button from '../templates/components/Button.html.twig';
-import { fn } from '@storybook/test';
-import { twig } from '@sensiolabs/storybook-symfony-webpack5';
+import { fn } from 'storybook/test';
+import { twig } from '@sensiolabs/storybook-symfony-vite';
 
 export default {
-    component: (args) => ({
+    render: (args) => ({
         components: {Button},
         template: twig`
         <twig:Button :data-storybook-callbacks="click">
@@ -59,8 +59,8 @@ You can use the `_context` variable instead:
 ```js
 // stories/Counter.stories.js
 import Counter from '../templates/components/Counter.html.twig';
-import { fn } from '@storybook/test';
-import { twig } from '@sensiolabs/storybook-symfony-webpack5';
+import { fn } from 'storybook/test';
+import { twig } from '@sensiolabs/storybook-symfony-vite';
 
 export default {
     render: (args) => ({
@@ -91,8 +91,8 @@ But when using a custom template, things get a bit more complex. You have to out
 
 ```js
 import Toggle from '../templates/components/Toggle.html.twig';
-import { fn } from '@storybook/test';
-import { twig } from '@sensiolabs/storybook-symfony-webpack5';
+import { fn } from 'storybook/test';
+import { twig } from '@sensiolabs/storybook-symfony-vite';
 
 export default {
     render: (args) => ({

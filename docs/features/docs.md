@@ -12,7 +12,7 @@ The feature must be enabled in `.storybook/main.ts`:
 ```ts
 // .storybook/main.ts
 
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack5";
+import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
 
 const config: StorybookConfig = {
     // ...
@@ -45,7 +45,7 @@ MDX is a mixed syntax between Markdown and JavaScript/JSX. In opposition to auto
 ```mdxjs
 // stories/Table.mdx
 
-import {Meta, Primary, Controls, Story, Source, Canvas} from "@storybook/blocks";
+import {Meta, Primary, Controls, Story, Source, Canvas} from "@storybook/addon-docs/blocks";
 import * as TableStories from './Table.stories';
 
 <Meta of={TableStories} />
@@ -72,7 +72,7 @@ Be sure to include `.mdx` files in the story specifier of your `.storybook/main.
 ```ts
 // .storybook/main.ts
 
-import type { StorybookConfig } from "@sensiolabs/storybook-symfony-webpack5";
+import type { StorybookConfig } from "@sensiolabs/storybook-symfony-vite";
 
 const config: StorybookConfig = {
     stories: [

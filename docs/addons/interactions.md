@@ -1,36 +1,11 @@
-# Interactions
+# Interaction Tests
 
 
 > ✅ This feature works without framework-specific configurations
 
 > [Storybook Documentation](https://storybook.js.org/docs/essentials/interactions)
 
-The Interactions addon provides a panel to visualize the interactions simulated by the [play function](../features/play-function.md).
-
-It also uses the [Testing Library](https://testing-library.com/) and [Vitest](https://vitest.dev/) to turn the play function into an interaction test, and make assertions about the component state and behavior.
-
-## Installation
-
-The addon must be installed with:
-```shell
-npm install @storybook/test @storybook/addon-interactions --save-dev
-```
-
-Then it has to be registered in the `main.js|ts` configuration, **after the actions addon**:
-
-```ts
-// .storybook/main.ts
-// ...
-
-const config: StorybookConfig = {
-    addons: [
-        // ...
-        "@storybook/addon-essentials",
-        "@storybook/addon-interactions",
-    ],
-    // ...
-};
-```
+Storybook 10 exposes Testing Library and Vitest-backed helpers from `storybook/test` for [play functions](../features/play-function.md).
 
 ## Usage
 
@@ -39,14 +14,14 @@ Here is an example for a _Counter_ component that increments a count on button c
 ```js
 // stories/Counter.stories.js
 import Counter from '../templates/components/Counter.html.twig';
-import { twig } from "@sensiolabs/storybook-symfony-webpack5";
-import {userEvent, waitFor, within, expect, fn} from "@storybook/test";
+import { twig } from "@sensiolabs/storybook-symfony-vite";
+import {userEvent, waitFor, within, expect, fn} from "storybook/test";
 
 export default {
     render: (args) => ({
         components: {Counter},
         template: twig`
-        <twig:Counter :data-storybook-action="_context['button:increment']">
+        <twig:Counter :data-storybook-callbacks="_context['counter:increment']">
             Increase count
         </twig:Counter>
         `
@@ -68,7 +43,7 @@ export const Default = {
         }
 
         await waitFor(async () => {
-            await expect(args['button:increment']).toHaveBeenCalledTimes(clicks);
+            await expect(args['counter:increment']).toHaveBeenCalledTimes(clicks);
             await expect(canvasElement).toHaveTextContent(`Counter: ${clicks}`);
         })
     }

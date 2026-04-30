@@ -51,7 +51,7 @@ If you have to customize the way story args are used to render your component, y
 ```js
 // stories/Button.stories.js
 import Button from '../templates/components/Button.html.twig';
-import { twig } from '@sensiolabs/storybook-symfony-webpack5';
+import { twig } from '@sensiolabs/storybook-symfony-vite';
 
 export default {
     render: (args) => ({
@@ -95,7 +95,7 @@ Finally, you can also provide a raw Twig template as a component, for example if
 
 ```js
 // stories/Button.stories.js
-import { twig } from '@sensiolabs/storybook-symfony-webpack5';
+import { twig } from '@sensiolabs/storybook-symfony-vite';
 
 export default {
     component: twig`<button type="button">{{ label }}</button>`
@@ -118,7 +118,7 @@ Consider the following story:
 
 ```js
 import Button from '../templates/components/Button.html.twig';
-import { twig } from '@sensiolabs/storybook-symfony-webpack5';
+import { twig } from '@sensiolabs/storybook-symfony-vite';
 
 export default {
     render: (args) => ({
