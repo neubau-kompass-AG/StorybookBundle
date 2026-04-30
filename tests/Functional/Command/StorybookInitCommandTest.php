@@ -36,6 +36,11 @@ class StorybookInitCommandTest extends KernelTestCase
         return Path::join(self::$kernel->getProjectDir(), ...$parts);
     }
 
+    private function repositoryPath(string ...$parts): string
+    {
+        return Path::join(\dirname(__DIR__, 3), ...$parts);
+    }
+
     private function getCommandTester(): CommandTester
     {
         $application = new Application(self::$kernel);
@@ -99,6 +104,10 @@ class StorybookInitCommandTest extends KernelTestCase
         $this->assertStringContainsString('@neubau-kompass/storybook-symfony-vite', $main);
         $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
 
+        $packageJson = json_decode(file_get_contents($this->projectPath('package.json')), true, flags: \JSON_THROW_ON_ERROR);
+        $vitePackageJson = json_decode(file_get_contents($this->repositoryPath('packages', 'vite', 'package.json')), true, flags: \JSON_THROW_ON_ERROR);
+        $this->assertSame('^'.$vitePackageJson['version'], $packageJson['devDependencies']['@neubau-kompass/storybook-symfony-vite']);
+
         $this->assertFileExists($this->projectPath('vitest.config.ts'));
     }
 
@@ -152,6 +161,10 @@ class StorybookInitCommandTest extends KernelTestCase
         $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
         $this->assertStringContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
         $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-vite', $main);
+
+        $packageJson = json_decode(file_get_contents($this->projectPath('package.json')), true, flags: \JSON_THROW_ON_ERROR);
+        $webpackPackageJson = json_decode(file_get_contents($this->repositoryPath('packages', 'webpack', 'package.json')), true, flags: \JSON_THROW_ON_ERROR);
+        $this->assertSame('^'.$webpackPackageJson['version'], $packageJson['devDependencies']['@neubau-kompass/storybook-symfony-webpack']);
     }
 
     // -------------------------------------------------------------------------

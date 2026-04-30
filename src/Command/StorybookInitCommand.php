@@ -20,7 +20,6 @@ use Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle;
 final class StorybookInitCommand extends Command
 {
     public const STORYBOOK_VERSION = '10.3.5';
-    private const STORYBOOK_SYMFONY_PACKAGE_VERSION = '^0.1.0';
     private SymfonyStyle $io;
 
     public function __construct(private readonly string $projectDir)
@@ -126,7 +125,7 @@ HELP
         $packageJsonData['devDependencies'] ??= [];
         if ($legacyWebpack) {
             $packageJsonData['devDependencies'] += [
-                '@neubau-kompass/storybook-symfony-webpack' => self::STORYBOOK_SYMFONY_PACKAGE_VERSION,
+                '@neubau-kompass/storybook-symfony-webpack' => $this->getStorybookSymfonyPackageVersion($legacyWebpack),
                 '@storybook/addon-docs' => self::STORYBOOK_VERSION,
                 '@storybook/addon-webpack5-compiler-swc' => '4.0.3',
                 'storybook' => self::STORYBOOK_VERSION,
@@ -135,7 +134,7 @@ HELP
             ];
         } else {
             $packageJsonData['devDependencies'] += [
-                '@neubau-kompass/storybook-symfony-vite' => self::STORYBOOK_SYMFONY_PACKAGE_VERSION,
+                '@neubau-kompass/storybook-symfony-vite' => $this->getStorybookSymfonyPackageVersion($legacyWebpack),
                 '@storybook/addon-docs' => self::STORYBOOK_VERSION,
                 '@storybook/addon-vitest' => self::STORYBOOK_VERSION,
                 '@vitest/browser' => '4.1.5',
@@ -162,6 +161,26 @@ HELP
         $packageJsonContent = json_encode($packageJsonData, \JSON_PRETTY_PRINT | \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_SLASHES);
 
         $this->writeFileWithConfirmation($packageJsonFile, $packageJsonContent);
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function getStorybookSymfonyPackageVersion(bool $legacyWebpack): string
+    {
+        $package = $legacyWebpack ? 'webpack' : 'vite';
+        $packageJsonFile = Path::join(__DIR__, '..', '..', 'packages', $package, 'package.json');
+        $packageJsonContent = file_get_contents($packageJsonFile);
+        if (false === $packageJsonContent) {
+            throw new \RuntimeException(\sprintf('Unable to read "%s".', $packageJsonFile));
+        }
+
+        $packageJsonData = json_decode($packageJsonContent, true, flags: \JSON_THROW_ON_ERROR);
+        if (!\is_array($packageJsonData) || !isset($packageJsonData['version']) || !\is_string($packageJsonData['version'])) {
+            throw new \RuntimeException(\sprintf('The "%s" file must contain a string "version" field.', $packageJsonFile));
+        }
+
+        return '^'.$packageJsonData['version'];
     }
 
     private function setupStorybookConfig(bool $legacyWebpack, string $packageManager): void
