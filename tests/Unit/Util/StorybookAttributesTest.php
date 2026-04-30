@@ -9,6 +9,8 @@ class StorybookAttributesTest extends TestCase
 {
     /**
      * @dataProvider getValidArguments
+     *
+     * @param array<string, string> $array
      */
     public function testCreateFromArray(array $array, StorybookAttributes $expected): void
     {
@@ -17,6 +19,9 @@ class StorybookAttributesTest extends TestCase
         $this->assertEquals($expected, $attributes);
     }
 
+    /**
+     * @return \Generator<string, array{array: array<string, string>, expected: StorybookAttributes}>
+     */
     public static function getValidArguments(): iterable
     {
         yield 'only story' => [

@@ -120,6 +120,9 @@ class MockedPropertiesProxyTest extends TestCase
         $this->assertEquals('foo', $result);
     }
 
+    /**
+     * @return \Generator<string, array{string, string}>
+     */
     public static function getMethods(): iterable
     {
         yield 'hasser' => [

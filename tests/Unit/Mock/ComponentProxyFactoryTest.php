@@ -23,6 +23,8 @@ class ComponentProxyFactoryTest extends TestCase
 
     /**
      * @dataProvider getConfigurations
+     *
+     * @param array<int, array{componentClass: string, service: string, config: array<string, mixed>}> $configurations
      */
     public function testComponentHasMock(array $configurations, string $componentClass, bool $expected): void
     {
@@ -35,6 +37,9 @@ class ComponentProxyFactoryTest extends TestCase
         $this->assertEquals($expected, $proxyFactory->componentHasMock($componentClass));
     }
 
+    /**
+     * @return \Generator<string, array{array<int, array{componentClass: string, service: string, config: array<string, mixed>}>, string, bool}>
+     */
     public static function getConfigurations(): iterable
     {
         yield 'No configuration' => [

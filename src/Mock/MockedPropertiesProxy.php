@@ -2,12 +2,10 @@
 
 namespace Storybook\Mock;
 
-use Symfony\UX\TwigComponent\ComputedPropertiesProxy;
-
 /**
  * Wraps a Twig Component to use mocked methods defined in a provider.
  *
- * Heavily inspired from {@see ComputedPropertiesProxy}.
+ * Heavily inspired from {@see \Symfony\UX\TwigComponent\ComputedPropertiesProxy}.
  *
  * @author Nicolas Rigaud <squrious@protonmail.com>
  *
@@ -15,6 +13,9 @@ use Symfony\UX\TwigComponent\ComputedPropertiesProxy;
  */
 final class MockedPropertiesProxy
 {
+    /**
+     * @param array<string,string> $mockedMethods
+     */
     public function __construct(
         private readonly object $component,
         private readonly object $provider,
@@ -22,6 +23,9 @@ final class MockedPropertiesProxy
     ) {
     }
 
+    /**
+     * @param array<int,mixed> $args
+     */
     public function __call(string $name, array $args): mixed
     {
         if (\array_key_exists($name, $this->mockedMethods)) {
@@ -40,6 +44,9 @@ final class MockedPropertiesProxy
         return $this->component->{$this->normalizeMethod($name)}(...$args);
     }
 
+    /**
+     * @param array<int,mixed> $args
+     */
     private function callMockedMethod(string $name, array $args): mixed
     {
         $invocationContext = new MockInvocationContext($this->component, $args);

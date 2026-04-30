@@ -65,6 +65,9 @@ class StoryRendererTest extends TestCase
         $renderer->render($story);
     }
 
+    /**
+     * @return \Generator<string, array{Error, class-string<RenderException>|class-string<UnauthorizedStoryException>}>
+     */
     public static function twigErrorProvider(): iterable
     {
         yield 'sandbox error' => [

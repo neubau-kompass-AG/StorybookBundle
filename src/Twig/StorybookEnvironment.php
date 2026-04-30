@@ -29,7 +29,7 @@ class StorybookEnvironment extends Environment
      *
      * @param class-string<TRuntime> $class
      *
-     * @return TRuntime
+     * @return ComponentRuntime|object
      *
      * @throws RuntimeError
      */

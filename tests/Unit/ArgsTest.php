@@ -136,6 +136,8 @@ class ArgsTest extends TestCase
 
     /**
      * @dataProvider getInvalidMethodCalls
+     *
+     * @param callable(): void $test
      */
     public function testArrayMethodsThrowExceptionWhenKeyIsNotString(callable $test): void
     {
@@ -144,6 +146,9 @@ class ArgsTest extends TestCase
         $test();
     }
 
+    /**
+     * @return \Generator<string, array{callable(): void}>
+     */
     public static function getInvalidMethodCalls(): iterable
     {
         yield 'get' => [static function () {
@@ -154,7 +159,7 @@ class ArgsTest extends TestCase
 
         yield 'set' => [static function () {
             $args = new Args();
-            $args[0] = 'foo';
+            $args->offsetSet(0, 'foo');
         }];
 
         yield 'exists' => [static function () {
@@ -165,7 +170,7 @@ class ArgsTest extends TestCase
 
         yield 'unset' => [static function () {
             $args = new Args();
-            unset($args[0]);
+            $args->offsetUnset(0);
         }];
 
         yield 'constructor' => [static function () {

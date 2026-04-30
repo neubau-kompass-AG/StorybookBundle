@@ -24,6 +24,9 @@ class StoryRendererTest extends KernelTestCase
         $renderer->render($story);
     }
 
+    /**
+     * @return \Generator<string, array{string}>
+     */
     public static function getInvalidTemplates(): iterable
     {
         yield 'function' => ['
@@ -74,6 +77,8 @@ class StoryRendererTest extends KernelTestCase
 
     /**
      * @dataProvider getValidTemplates
+     *
+     * @param array<string, mixed> $args
      */
     public function testRenderStoryWithAllowedContent(string $template, array $args = []): void
     {
@@ -87,6 +92,9 @@ class StoryRendererTest extends KernelTestCase
         $this->assertIsString($content);
     }
 
+    /**
+     * @return \Generator<string, array{string}|array{string, array<string, mixed>}>
+     */
     public static function getValidTemplates(): iterable
     {
         yield 'access story args' => ['

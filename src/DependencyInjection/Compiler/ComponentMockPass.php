@@ -53,6 +53,9 @@ final class ComponentMockPass implements CompilerPassInterface
         $proxyFactoryDefinition->setArgument(0, ServiceLocatorTagPass::register($container, $providerMap));
     }
 
+    /**
+     * @return array{globalMocks: array<string, string>, storiesMocks: array<string, array<string, string>>}
+     */
     private function extractMethodMocks(string $loaderClass, string $componentClass): array
     {
         $globalMocks = [];

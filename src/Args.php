@@ -3,10 +3,16 @@
 namespace Storybook;
 
 /**
+ * @implements \ArrayAccess<string, mixed>
+ * @implements \IteratorAggregate<string, mixed>
+ *
  * @author Nicolas Rigaud <squrious@protonmail.com>
  */
 final class Args implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+    /**
+     * @param array<string, mixed> $storage
+     */
     public function __construct(private array $storage = [])
     {
         foreach (array_keys($this->storage) as $key) {
@@ -24,6 +30,9 @@ final class Args implements \ArrayAccess, \Countable, \IteratorAggregate
         $this[$key] = $value;
     }
 
+    /**
+     * @param self|array<string, mixed> $args
+     */
     public function merge(self|array $args, bool $override = false): void
     {
         foreach ($args as $key => $value) {
@@ -70,6 +79,9 @@ final class Args implements \ArrayAccess, \Countable, \IteratorAggregate
         unset($this->storage[$offset]);
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function toArray(): array
     {
         return $this->storage;

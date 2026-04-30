@@ -30,6 +30,9 @@ class ComponentRenderSubscriberTest extends WebTestCase
         $this->assertStringContainsString('ComputedProp: mocked computedProp', $text);
     }
 
+    /**
+     * @return \Generator<string, array{story: string}>
+     */
     public static function getStories(): iterable
     {
         yield 'Function style' => [

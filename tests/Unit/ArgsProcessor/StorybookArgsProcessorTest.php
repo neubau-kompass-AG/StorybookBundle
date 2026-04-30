@@ -15,6 +15,9 @@ class StorybookArgsProcessorTest extends TestCase
 {
     /**
      * @dataProvider getExtractTests
+     *
+     * @param array<string, mixed> $json
+     * @param array<string, mixed> $expected
      */
     public function testExtractRequest(array $json, array $expected): void
     {
@@ -27,6 +30,9 @@ class StorybookArgsProcessorTest extends TestCase
         $this->assertSame($expected, $data->toArray());
     }
 
+    /**
+     * @return iterable<string, array{array<string, mixed>, array<string, mixed>}>
+     */
     public function getExtractTests(): iterable
     {
         yield from [
@@ -135,6 +141,9 @@ class StorybookArgsProcessorTest extends TestCase
         $this->assertEquals(new Args(['bar' => 'value', 'foo' => 'second']), $argsProcessor->process($request));
     }
 
+    /**
+     * @param array<string, mixed> $args
+     */
     private function createRequest(string $story, array $args = []): Request
     {
         $request = new Request(request: ['args' => $args]);
