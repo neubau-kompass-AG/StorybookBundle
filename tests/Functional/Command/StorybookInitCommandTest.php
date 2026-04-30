@@ -41,6 +41,17 @@ class StorybookInitCommandTest extends KernelTestCase
         return Path::join(\dirname(__DIR__, 3), ...$parts);
     }
 
+    private function readFile(string $file): string
+    {
+        $this->assertFileExists($file);
+        $this->assertFileIsReadable($file);
+
+        $contents = file_get_contents($file);
+        $this->assertNotFalse($contents, \sprintf('Unable to read "%s".', $file));
+
+        return $contents;
+    }
+
     /**
      * @return array<string, mixed>
      *
@@ -48,11 +59,9 @@ class StorybookInitCommandTest extends KernelTestCase
      */
     private function readJsonObject(string $file): array
     {
-        $contents = file_get_contents($file);
-        $this->assertNotFalse($contents, \sprintf('Unable to read "%s".', $file));
-
-        $data = json_decode($contents, true, flags: \JSON_THROW_ON_ERROR);
+        $data = json_decode($this->readFile($file), true, flags: \JSON_THROW_ON_ERROR);
         $this->assertIsArray($data);
+        $this->assertFalse(array_is_list($data), \sprintf('Expected "%s" to decode to a JSON object.', $file));
 
         return $data;
     }
@@ -116,8 +125,7 @@ class StorybookInitCommandTest extends KernelTestCase
 
         $commandTester->assertCommandIsSuccessful();
 
-        $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
-        $this->assertNotFalse($main);
+        $main = $this->readFile($this->projectPath('.storybook', 'main.ts'));
         $this->assertStringContainsString('@neubau-kompass/storybook-symfony-vite', $main);
         $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
 
@@ -175,8 +183,7 @@ class StorybookInitCommandTest extends KernelTestCase
 
         $commandTester->assertCommandIsSuccessful();
 
-        $main = file_get_contents($this->projectPath('.storybook', 'main.ts'));
-        $this->assertNotFalse($main);
+        $main = $this->readFile($this->projectPath('.storybook', 'main.ts'));
         $this->assertStringContainsString('@neubau-kompass/storybook-symfony-webpack', $main);
         $this->assertStringNotContainsString('@neubau-kompass/storybook-symfony-vite', $main);
 
@@ -211,7 +218,7 @@ class StorybookInitCommandTest extends KernelTestCase
         $this->assertStringContainsString('pnpm install', $display);
         $this->assertStringContainsString('pnpm storybook', $display);
 
-        $vitestConfig = file_get_contents($this->projectPath('vitest.config.ts'));
+        $vitestConfig = $this->readFile($this->projectPath('vitest.config.ts'));
         $this->assertStringContainsString("storybookScript: 'pnpm storybook'", $vitestConfig);
     }
 
