@@ -213,6 +213,43 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHPUnit
         run: vendor/bin/simple-phpunit
+  tests-php-compat:
+    name: PHPUnit (PHP 8.2 / Symfony 7.4 / UX 2.34)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+      - name: Cache Composer downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-phpunit-compat-composer-php-8.2-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-phpunit-compat-composer-php-8.2-
+            ${{ runner.os }}-composer-php-8.2-
+            ${{ runner.os }}-composer-
+      - name: Install Symfony 7.4 / UX 2.34 dependencies
+        run: |
+          composer update --no-progress --prefer-dist --optimize-autoloader \
+            --with 'symfony/asset-mapper:7.4.*' \
+            --with 'symfony/browser-kit:7.4.*' \
+            --with 'symfony/console:7.4.*' \
+            --with 'symfony/css-selector:7.4.*' \
+            --with 'symfony/event-dispatcher:7.4.*' \
+            --with 'symfony/filesystem:7.4.*' \
+            --with 'symfony/framework-bundle:7.4.*' \
+            --with 'symfony/http-foundation:7.4.*' \
+            --with 'symfony/http-kernel:7.4.*' \
+            --with 'symfony/phpunit-bridge:7.4.*' \
+            --with 'symfony/twig-bundle:7.4.*' \
+            --with 'symfony/ux-live-component:2.34.0' \
+            --with 'symfony/ux-twig-component:2.34.0'
+      - name: Run PHPUnit
+        run: vendor/bin/simple-phpunit
   tests-integration:
     name: Storybook Vitest
     runs-on: ubuntu-latest

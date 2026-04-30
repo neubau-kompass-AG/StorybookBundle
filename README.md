@@ -122,8 +122,8 @@ Generated projects use the public JavaScript framework packages:
 
 | Builder | JavaScript package                          | Version  |
 | ------- | ------------------------------------------- | -------- |
-| Vite    | `@neubau-kompass/storybook-symfony-vite`    | `^0.1.0` |
-| Webpack | `@neubau-kompass/storybook-symfony-webpack` | `^0.1.0` |
+| Vite    | `@neubau-kompass/storybook-symfony-vite`    | `^0.1.1` |
+| Webpack | `@neubau-kompass/storybook-symfony-webpack` | `^0.1.1` |
 
 ## Builders
 
