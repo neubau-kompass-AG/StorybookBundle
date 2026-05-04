@@ -20,3 +20,21 @@
 
 .php-cs-fixer.cache
 /.phpactor.json
+
+# Local environment overrides.
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!.env.dist
+
+# OS and editor files.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.fleet/
+*.iml
+*.swp
+*.swo
